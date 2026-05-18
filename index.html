@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>云枢企业AI平台 · DSJ 定制版变更说明</title>
+    <style>
+      :root {
+        --bg: #f6f8fb;
+        --card: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --accent: #2563eb;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC",
+          "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 40px 24px 64px;
+      }
+      .headline {
+        margin: 0 0 8px;
+        font-size: 34px;
+        font-weight: 700;
+      }
+      .subline {
+        margin: 0;
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+        margin: 28px 0 8px;
+      }
+      .metric {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px;
+      }
+      .metric .num {
+        display: block;
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+      .metric .label {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .note {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        color: #1e3a8a;
+        padding: 14px 16px;
+        border-radius: 10px;
+        margin: 24px 0;
+        font-size: 14px;
+      }
+      .section {
+        margin-top: 24px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 16px;
+      }
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 20px;
+      }
+      .tags {
+        margin: 0 0 12px;
+      }
+      .tag {
+        display: inline-block;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 2px 10px;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        color: var(--muted);
+        background: #f9fafb;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0 0 12px;
+      }
+      ul {
+        margin: 8px 0 0 20px;
+        padding: 0;
+      }
+      code {
+        background: #f3f4f6;
+        border-radius: 4px;
+        padding: 0 5px;
+        font-size: 13px;
+      }
+      .paths {
+        margin-top: 10px;
+        padding: 12px;
+        border: 1px dashed var(--border);
+        border-radius: 8px;
+        background: #fafafa;
+        font-size: 13px;
+      }
+      .paths li {
+        margin: 2px 0;
+      }
+      .footer {
+        margin-top: 28px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="headline">云枢企业AI平台 · DSJ 定制版</h1>
+      <p class="subline">feature-8.7.x-dsj 需求变更说明（版本：AI-Platform-v1.1.5-dsj）</p>
+
+      <div class="grid">
+        <div class="metric">
+          <span class="num">4</span>
+          <span class="label">定制功能</span>
+        </div>
+        <div class="metric">
+          <span class="num">34</span>
+          <span class="label">8.7.x 合并后变更文件</span>
+        </div>
+        <div class="metric">
+          <span class="num">23</span>
+          <span class="label">核心业务改动文件（排除版本/配置）</span>
+        </div>
+        <div class="metric">
+          <span class="num">1</span>
+          <span class="label">定制包（extension-dsj）</span>
+        </div>
+      </div>
+
+      <div class="note">
+        统计口径：本说明仅记录 <code>feature-8.7.x-dsj</code> 分支定制改动，已排除
+        <code>8.7.x</code> 合并基线（<code>c2ae4184de3</code> 与 <code>1da47cb88fa</code>）。
+      </div>
+
+      <div class="section">
+        <div class="card">
+          <h3>01 · 繁体中文全量补齐</h3>
+          <p class="tags">
+            <span class="tag">LOCALE</span>
+            <span class="tag">FEATURE</span>
+            <span class="tag">定制</span>
+          </p>
+          <p class="meta">
+            提交范围：<code>771fa4f4c7e</code> ~ <code>5cb0e99a6f8</code>（7 次提交） · 96 文件 · 约
+            7,500 行变更
+          </p>
+          <ul>
+            <li>补齐 Admin / Portal / Mobile / 表单 / 页面组件等多模块繁体词条。</li>
+            <li>修复繁体缺失和术语错误，统一关键业务词汇表达。</li>
+            <li>补充计算规则相关繁体适配，减少公式场景多语言偏差。</li>
+          </ul>
+          <div class="paths">
+            <strong>关键文件路径</strong>
+            <ul>
+              <li><code>packages/extension-dsj/src/locale/</code></li>
+              <li><code>packages/cloudpivot-locale/</code></li>
+              <li><code>packages/cloudpivot-form/form/src/components/</code></li>
+              <li><code>packages/cloudpivot-form/form/src/common/components/formula-compiler/format.ts</code></li>
+              <li><code>packages/cloudpivot-page/src/ui-widgets/</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>02 · extension-dsj 国际化接入架构</h3>
+          <p class="tags">
+            <span class="tag">I18N</span>
+            <span class="tag">REFACTOR</span>
+            <span class="tag">定制</span>
+          </p>
+          <p class="meta">
+            提交：<code>6f2cc4cac7b</code> · 87 文件 · 约 17,000 行（以 locale 资源为主）
+          </p>
+          <ul>
+            <li>建立 extension-dsj 的 admin / portal / mobile 公共国际化目录结构。</li>
+            <li>新增 zh-CN / en-US / zh-TW 三语入口，支持定制词条独立维护。</li>
+            <li>更新 cloudpivot-locale 三端 index 合并逻辑，运行时自动融合 extension-dsj 资源。</li>
+          </ul>
+          <div class="paths">
+            <strong>关键文件路径</strong>
+            <ul>
+              <li><code>packages/extension-dsj/src/common/locale/admin/</code></li>
+              <li><code>packages/extension-dsj/src/common/locale/mobile/</code></li>
+              <li><code>packages/extension-dsj/src/common/locale/portal/</code></li>
+              <li><code>packages/cloudpivot-locale/admin/index.ts</code></li>
+              <li><code>packages/cloudpivot-locale/mobile/index.ts</code></li>
+              <li><code>packages/cloudpivot-locale/portal/index.ts</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>03 · 链接地址统一配置中心</h3>
+          <p class="tags">
+            <span class="tag">FEATURE</span>
+            <span class="tag">CONFIG</span>
+            <span class="tag">定制</span>
+          </p>
+          <p class="meta">
+            提交：<code>2cdcdd8514f</code>、<code>77f29d953d7</code> · 23 文件 · 约 600 行
+          </p>
+          <ul>
+            <li>在系统「集成设置」新增链接地址配置，统一管理 11 类帮助/指引链接。</li>
+            <li>核心实现下沉到 extension-dsj，主工程改为引入调用，避免分散硬编码。</li>
+            <li>支持客服、手册、视频、开发者文档、更新日志、业务规则、集成帮助等场景统一读取。</li>
+            <li>当前先落地 localStorage（后续可切换接口持久化到数据库）。</li>
+          </ul>
+          <div class="paths">
+            <strong>关键文件路径</strong>
+            <ul>
+              <li><code>packages/extension-dsj/src/common/link-config/index.ts</code></li>
+              <li><code>packages/extension-dsj/src/common/link-config/link-config.vue</code></li>
+              <li><code>packages/cloudpivot-admin-core/src/views/system/integration-setting/index.vue</code></li>
+              <li><code>packages/cloudpivot-admin-core/src/components/global/header/index.vue</code></li>
+              <li><code>packages/cloudpivot/common/src/components/pc/menu-tools/help-center.vue</code></li>
+              <li><code>packages/cloudpivot/common/src/components/pc/menu-tools/customer-service.vue</code></li>
+              <li><code>packages/cloudpivot/common/src/guidance/others.ts</code></li>
+              <li><code>packages/cloudpivot/common/src/guidance/business-rules-node.ts</code></li>
+              <li><code>packages/cloudpivot-admin-core/src/views/system/license/index.vue</code></li>
+              <li><code>packages/cloudpivot-admin-core/src/views/system/integration-setting/system-languages-setting.vue</code></li>
+              <li><code>packages/cloudpivot-admin-core/src/views/app/model/workflow.vue</code></li>
+              <li><code>packages/cloudpivot-admin-core/src/views/app/biz-rule/biz-rule-design.vue</code></li>
+              <li><code>packages/cloudpivot-admin-core/src/views/app/biz-rule/biz-rule-panels.vue</code></li>
+              <li><code>packages/cloudpivot-admin-core/src/views/app/biz-rule/property-component-extend/node-type.vue</code></li>
+              <li><code>packages/cloudpivot-admin-core/src/views/integration/integration/content.vue</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>04 · 移动端打包错误修复（TS2345）</h3>
+          <p class="tags">
+            <span class="tag">FIX</span>
+            <span class="tag">MOBILE</span>
+            <span class="tag">定制</span>
+          </p>
+          <p class="meta">提交：<code>8f53483cc5c</code> · 4 文件</p>
+          <ul>
+            <li>修复 task-hall 场景中 <code>ConditionGroupParser</code> 参数类型不兼容问题。</li>
+            <li>对相关调用添加断言，解除移动端打包阻塞。</li>
+          </ul>
+          <div class="paths">
+            <strong>关键文件路径</strong>
+            <ul>
+              <li><code>packages/cloudpivot/common/src/utils/task-hall/fns/required.ts</code></li>
+              <li><code>packages/cloudpivot/common/src/utils/task-hall/fns/display.ts</code></li>
+              <li><code>packages/cloudpivot/common/src/utils/task-hall/fns/readonly.ts</code></li>
+              <li><code>packages/cloudpivot/common/src/utils/task-hall/utils/flatSheetDataToFormData.ts</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="footer">
+        定制包版本参考：<code>extension-dsj@1.1.4-ai-platform-dsj.3</code>。如需发布页展示，可直接以本文件为静态说明页。
+      </p>
+    </div>
+  </body>
+</html>
