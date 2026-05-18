@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>云枢企业AI平台 · DSJ 定制版变更说明</title>
+    <title>雲樞企業AI平台 · DSJ 定制版變更說明</title>
     <style>
       :root {
         --bg: #f6f8fb;
@@ -29,13 +29,42 @@
         margin: 0 auto;
         padding: 40px 24px 64px;
       }
+      .header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
       .headline {
-        margin: 0 0 8px;
+        margin: 0;
         font-size: 34px;
         font-weight: 700;
       }
+      .lang-switch {
+        display: flex;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+        font-size: 13px;
+      }
+      .lang-switch button {
+        border: none;
+        background: var(--card);
+        padding: 6px 14px;
+        cursor: pointer;
+        color: var(--muted);
+        transition: all 0.2s;
+      }
+      .lang-switch button.active {
+        background: var(--accent);
+        color: #fff;
+      }
+      .lang-switch button:hover:not(.active) {
+        background: #f3f4f6;
+      }
       .subline {
-        margin: 0;
+        margin: 8px 0 0;
         color: var(--muted);
         font-size: 15px;
       }
@@ -133,52 +162,53 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="headline">云枢企业AI平台 · DSJ 定制版</h1>
-      <p class="subline">feature-8.7.x-dsj 需求变更说明（版本：AI-Platform-v1.1.5-dsj）</p>
+      <div class="header-row">
+        <h1 class="headline" data-tw="雲樞企業AI平台 · DSJ 定制版" data-cn="云枢企业AI平台 · DSJ 定制版"></h1>
+        <div class="lang-switch">
+          <button id="btn-tw" class="active" onclick="switchLang('tw')">繁體中文</button>
+          <button id="btn-cn" onclick="switchLang('cn')">简体中文</button>
+        </div>
+      </div>
+      <p class="subline" data-tw="feature-8.7.x-dsj 需求變更說明（版本：AI-Platform-v1.1.5-dsj）" data-cn="feature-8.7.x-dsj 需求变更说明（版本：AI-Platform-v1.1.5-dsj）"></p>
 
       <div class="grid">
         <div class="metric">
           <span class="num">4</span>
-          <span class="label">定制功能</span>
+          <span class="label" data-tw="定制功能" data-cn="定制功能"></span>
         </div>
         <div class="metric">
           <span class="num">34</span>
-          <span class="label">8.7.x 合并后变更文件</span>
+          <span class="label" data-tw="8.7.x 合併後變更檔案" data-cn="8.7.x 合并后变更文件"></span>
         </div>
         <div class="metric">
           <span class="num">23</span>
-          <span class="label">核心业务改动文件（排除版本/配置）</span>
+          <span class="label" data-tw="核心業務改動檔案（排除版本/配置）" data-cn="核心业务改动文件（排除版本/配置）"></span>
         </div>
         <div class="metric">
           <span class="num">1</span>
-          <span class="label">定制包（extension-dsj）</span>
+          <span class="label" data-tw="定制套件（extension-dsj）" data-cn="定制包（extension-dsj）"></span>
         </div>
       </div>
 
-      <div class="note">
-        统计口径：本说明仅记录 <code>feature-8.7.x-dsj</code> 分支定制改动，已排除
-        <code>8.7.x</code> 合并基线（<code>c2ae4184de3</code> 与 <code>1da47cb88fa</code>）。
-      </div>
+      <div class="note" data-tw="統計口徑：本說明僅記錄 <code>feature-8.7.x-dsj</code> 分支定制改動，已排除 <code>8.7.x</code> 合併基線（<code>c2ae4184de3</code> 與 <code>1da47cb88fa</code>）。" data-cn="统计口径：本说明仅记录 <code>feature-8.7.x-dsj</code> 分支定制改动，已排除 <code>8.7.x</code> 合并基线（<code>c2ae4184de3</code> 与 <code>1da47cb88fa</code>）。"></div>
 
       <div class="section">
+        <!-- Card 01 -->
         <div class="card">
-          <h3>01 · 繁体中文全量补齐</h3>
+          <h3 data-tw="01 · 繁體中文全量補齊" data-cn="01 · 繁体中文全量补齐"></h3>
           <p class="tags">
             <span class="tag">LOCALE</span>
             <span class="tag">FEATURE</span>
-            <span class="tag">定制</span>
+            <span class="tag" data-tw="定制" data-cn="定制"></span>
           </p>
-          <p class="meta">
-            提交范围：<code>771fa4f4c7e</code> ~ <code>5cb0e99a6f8</code>（7 次提交） · 96 文件 · 约
-            7,500 行变更
-          </p>
+          <p class="meta" data-tw="提交範圍：<code>771fa4f4c7e</code> ~ <code>5cb0e99a6f8</code>（7 次提交） · 96 檔案 · 約 7,500 行變更" data-cn="提交范围：<code>771fa4f4c7e</code> ~ <code>5cb0e99a6f8</code>（7 次提交） · 96 文件 · 约 7,500 行变更"></p>
           <ul>
-            <li>补齐 Admin / Portal / Mobile / 表单 / 页面组件等多模块繁体词条。</li>
-            <li>修复繁体缺失和术语错误，统一关键业务词汇表达。</li>
-            <li>补充计算规则相关繁体适配，减少公式场景多语言偏差。</li>
+            <li data-tw="補齊 Admin / Portal / Mobile / 表單 / 頁面元件等多模組繁體詞條。" data-cn="补齐 Admin / Portal / Mobile / 表单 / 页面组件等多模块繁体词条。"></li>
+            <li data-tw="修復繁體缺失和術語錯誤，統一關鍵業務詞彙表達。" data-cn="修复繁体缺失和术语错误，统一关键业务词汇表达。"></li>
+            <li data-tw="補充計算規則相關繁體適配，減少公式場景多語言偏差。" data-cn="补充计算规则相关繁体适配，减少公式场景多语言偏差。"></li>
           </ul>
           <div class="paths">
-            <strong>关键文件路径</strong>
+            <strong data-tw="關鍵檔案路徑" data-cn="关键文件路径"></strong>
             <ul>
               <li><code>packages/extension-dsj/src/locale/</code></li>
               <li><code>packages/cloudpivot-locale/</code></li>
@@ -189,23 +219,22 @@
           </div>
         </div>
 
+        <!-- Card 02 -->
         <div class="card">
-          <h3>02 · extension-dsj 国际化接入架构</h3>
+          <h3 data-tw="02 · extension-dsj 國際化接入架構" data-cn="02 · extension-dsj 国际化接入架构"></h3>
           <p class="tags">
             <span class="tag">I18N</span>
             <span class="tag">REFACTOR</span>
-            <span class="tag">定制</span>
+            <span class="tag" data-tw="定制" data-cn="定制"></span>
           </p>
-          <p class="meta">
-            提交：<code>6f2cc4cac7b</code> · 87 文件 · 约 17,000 行（以 locale 资源为主）
-          </p>
+          <p class="meta" data-tw="提交：<code>6f2cc4cac7b</code> · 87 檔案 · 約 17,000 行（以 locale 資源為主）" data-cn="提交：<code>6f2cc4cac7b</code> · 87 文件 · 约 17,000 行（以 locale 资源为主）"></p>
           <ul>
-            <li>建立 extension-dsj 的 admin / portal / mobile 公共国际化目录结构。</li>
-            <li>新增 zh-CN / en-US / zh-TW 三语入口，支持定制词条独立维护。</li>
-            <li>更新 cloudpivot-locale 三端 index 合并逻辑，运行时自动融合 extension-dsj 资源。</li>
+            <li data-tw="建立 extension-dsj 的 admin / portal / mobile 公共國際化目錄結構。" data-cn="建立 extension-dsj 的 admin / portal / mobile 公共国际化目录结构。"></li>
+            <li data-tw="新增 zh-CN / en-US / zh-TW 三語入口，支援定制詞條獨立維護。" data-cn="新增 zh-CN / en-US / zh-TW 三语入口，支持定制词条独立维护。"></li>
+            <li data-tw="更新 cloudpivot-locale 三端 index 合併邏輯，執行時自動融合 extension-dsj 資源。" data-cn="更新 cloudpivot-locale 三端 index 合并逻辑，运行时自动融合 extension-dsj 资源。"></li>
           </ul>
           <div class="paths">
-            <strong>关键文件路径</strong>
+            <strong data-tw="關鍵檔案路徑" data-cn="关键文件路径"></strong>
             <ul>
               <li><code>packages/extension-dsj/src/common/locale/admin/</code></li>
               <li><code>packages/extension-dsj/src/common/locale/mobile/</code></li>
@@ -217,24 +246,23 @@
           </div>
         </div>
 
+        <!-- Card 03 -->
         <div class="card">
-          <h3>03 · 链接地址统一配置中心</h3>
+          <h3 data-tw="03 · 連結位址統一配置中心" data-cn="03 · 链接地址统一配置中心"></h3>
           <p class="tags">
             <span class="tag">FEATURE</span>
             <span class="tag">CONFIG</span>
-            <span class="tag">定制</span>
+            <span class="tag" data-tw="定制" data-cn="定制"></span>
           </p>
-          <p class="meta">
-            提交：<code>2cdcdd8514f</code>、<code>77f29d953d7</code> · 23 文件 · 约 600 行
-          </p>
+          <p class="meta" data-tw="提交：<code>2cdcdd8514f</code>、<code>77f29d953d7</code> · 23 檔案 · 約 600 行" data-cn="提交：<code>2cdcdd8514f</code>、<code>77f29d953d7</code> · 23 文件 · 约 600 行"></p>
           <ul>
-            <li>在系统「集成设置」新增链接地址配置，统一管理 11 类帮助/指引链接。</li>
-            <li>核心实现下沉到 extension-dsj，主工程改为引入调用，避免分散硬编码。</li>
-            <li>支持客服、手册、视频、开发者文档、更新日志、业务规则、集成帮助等场景统一读取。</li>
-            <li>当前先落地 localStorage（后续可切换接口持久化到数据库）。</li>
+            <li data-tw="在系統「整合設定」新增連結位址配置，統一管理 11 類說明/指引連結。" data-cn="在系统「集成设置」新增链接地址配置，统一管理 11 类帮助/指引链接。"></li>
+            <li data-tw="核心實作下沉到 extension-dsj，主工程改為引入呼叫，避免分散寫死。" data-cn="核心实现下沉到 extension-dsj，主工程改为引入调用，避免分散硬编码。"></li>
+            <li data-tw="支援客服、手冊、影片、開發者文件、更新日誌、業務規則、整合說明等場景統一讀取。" data-cn="支持客服、手册、视频、开发者文档、更新日志、业务规则、集成帮助等场景统一读取。"></li>
+            <li data-tw="當前先落地 localStorage（後續可切換介面持久化到資料庫）。" data-cn="当前先落地 localStorage（后续可切换接口持久化到数据库）。"></li>
           </ul>
           <div class="paths">
-            <strong>关键文件路径</strong>
+            <strong data-tw="關鍵檔案路徑" data-cn="关键文件路径"></strong>
             <ul>
               <li><code>packages/extension-dsj/src/common/link-config/index.ts</code></li>
               <li><code>packages/extension-dsj/src/common/link-config/link-config.vue</code></li>
@@ -255,20 +283,21 @@
           </div>
         </div>
 
+        <!-- Card 04 -->
         <div class="card">
-          <h3>04 · 移动端打包错误修复（TS2345）</h3>
+          <h3 data-tw="04 · 行動端打包錯誤修復（TS2345）" data-cn="04 · 移动端打包错误修复（TS2345）"></h3>
           <p class="tags">
             <span class="tag">FIX</span>
             <span class="tag">MOBILE</span>
-            <span class="tag">定制</span>
+            <span class="tag" data-tw="定制" data-cn="定制"></span>
           </p>
-          <p class="meta">提交：<code>8f53483cc5c</code> · 4 文件</p>
+          <p class="meta" data-tw="提交：<code>8f53483cc5c</code> · 4 檔案" data-cn="提交：<code>8f53483cc5c</code> · 4 文件"></p>
           <ul>
-            <li>修复 task-hall 场景中 <code>ConditionGroupParser</code> 参数类型不兼容问题。</li>
-            <li>对相关调用添加断言，解除移动端打包阻塞。</li>
+            <li data-tw="修復 task-hall 場景中 <code>ConditionGroupParser</code> 參數類型不相容問題。" data-cn="修复 task-hall 场景中 <code>ConditionGroupParser</code> 参数类型不兼容问题。"></li>
+            <li data-tw="對相關呼叫添加斷言，解除行動端打包阻塞。" data-cn="对相关调用添加断言，解除移动端打包阻塞。"></li>
           </ul>
           <div class="paths">
-            <strong>关键文件路径</strong>
+            <strong data-tw="關鍵檔案路徑" data-cn="关键文件路径"></strong>
             <ul>
               <li><code>packages/cloudpivot/common/src/utils/task-hall/fns/required.ts</code></li>
               <li><code>packages/cloudpivot/common/src/utils/task-hall/fns/display.ts</code></li>
@@ -279,9 +308,23 @@
         </div>
       </div>
 
-      <p class="footer">
-        定制包版本参考：<code>extension-dsj@1.1.4-ai-platform-dsj.3</code>。如需发布页展示，可直接以本文件为静态说明页。
-      </p>
+      <p class="footer" data-tw="定制套件版本參考：<code>extension-dsj@1.1.4-ai-platform-dsj.3</code>。如需發佈頁展示，可直接以本檔案為靜態說明頁。" data-cn="定制包版本参考：<code>extension-dsj@1.1.4-ai-platform-dsj.3</code>。如需发布页展示，可直接以本文件为静态说明页。"></p>
     </div>
+
+    <script>
+      function switchLang(lang) {
+        document.querySelectorAll('[data-tw]').forEach(function (el) {
+          el.innerHTML = el.getAttribute('data-' + lang);
+        });
+        document.getElementById('btn-tw').classList.toggle('active', lang === 'tw');
+        document.getElementById('btn-cn').classList.toggle('active', lang === 'cn');
+        document.documentElement.lang = lang === 'tw' ? 'zh-TW' : 'zh-CN';
+        localStorage.setItem('dsj-changelog-lang', lang);
+      }
+      (function () {
+        var saved = localStorage.getItem('dsj-changelog-lang') || 'tw';
+        switchLang(saved);
+      })();
+    </script>
   </body>
 </html>
