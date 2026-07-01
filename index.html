@@ -1,559 +1,1304 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>雲樞企業AI平台 · DSJ 定制版 v1.1.10 發版說明</title>
-    <style>
-      :root {
-        --bg: #f6f8fb;
-        --card: #ffffff;
-        --text: #1f2937;
-        --muted: #6b7280;
-        --border: #e5e7eb;
-        --accent: #2563eb;
-        --accent-soft: #eff6ff;
-        --success: #059669;
-        --warning: #d97706;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>雲樞企業 AI 平台 · DSJ 定製版版本升級說明</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #fff;
+      --text: #1f2937;
+      --muted: #667085;
+      --border: #dfe4ea;
+      --soft: #eef2f6;
+      --accent: #2563eb;
+      --accent2: #1d4ed8;
+      --accentSoft: #eff6ff;
+      --green: #087f5b;
+      --greenSoft: #e9f7ef;
+      --amber: #a16207;
+      --amberSoft: #fff7ed;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'PingFang TC', 'Microsoft JhengHei', 'PingFang SC', 'Microsoft YaHei',
+      sans-serif;
+      line-height: 1.65;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .shell {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--accent2);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .headline {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.25;
+      font-weight: 760;
+    }
+    .subline {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .lang-switch {
+      display: inline-flex;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--panel);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    .lang-switch button {
+      min-width: 92px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 13px;
+      padding: 8px 14px;
+    }
+    .lang-switch button.active {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 292px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .version-menu {
+      position: sticky;
+      top: 24px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+    .menu-title {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .nav-list {
+      display: grid;
+      gap: 8px;
+    }
+    .nav-link {
+      display: block;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 11px;
+      background: #f8fafc;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      border-color: #bfdbfe;
+      background: var(--accentSoft);
+    }
+    .nav-link.active {
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+    .nav-link .version {
+      display: block;
+      font-size: 13px;
+      font-weight: 760;
+      line-height: 1.35;
+    }
+    .nav-link .date {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .content {
+      display: grid;
+      gap: 24px;
+      min-width: 0;
+    }
+    .release-panel {
+      scroll-margin-top: 24px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .release-head {
+      padding: 24px 26px 18px;
+      border-bottom: 1px solid var(--soft);
+    }
+    .release-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+    .release-title {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.3;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: var(--accentSoft);
+      color: var(--accent2);
+      border: 1px solid #bfdbfe;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .release-meta {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .metric {
+      border: 1px solid var(--soft);
+      border-radius: 8px;
+      background: #fbfdff;
+      padding: 13px 14px;
+      min-height: 82px;
+    }
+    .metric .num {
+      display: block;
+      color: var(--accent);
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 780;
+      word-break: break-word;
+    }
+    .metric .label {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .release-body {
+      padding: 22px 26px 26px;
+    }
+    .summary {
+      margin: 0 0 20px;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      background: var(--accentSoft);
+      color: #1e3a8a;
+      padding: 14px 16px;
+      font-size: 14px;
+    }
+    .cards {
+      display: grid;
+      gap: 14px;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      padding: 18px 18px 16px;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 2px 9px;
+      color: var(--muted);
+      background: #f8fafc;
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .tag.green {
+      color: var(--green);
+      border-color: #b7e4c7;
+      background: var(--greenSoft);
+    }
+    .tag.amber {
+      color: var(--amber);
+      border-color: #fed7aa;
+      background: var(--amberSoft);
+    }
+    ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+    li {
+      margin: 4px 0;
+    }
+    code {
+      border-radius: 4px;
+      background: #f3f4f6;
+      padding: 1px 5px;
+      font-size: 12px;
+    }
+    .source-block {
+      margin-top: 20px;
+    }
+    .source-block h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+    }
+    .source-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .source-table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .source-table th,
+    .source-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--soft);
+      text-align: left;
+      vertical-align: top;
+    }
+    .source-table th {
+      background: #f8fafc;
+      color: #344054;
+      font-weight: 760;
+    }
+    .source-table tr:last-child td {
+      border-bottom: 0;
+    }
+    .source-table td:first-child {
+      width: 240px;
+      color: var(--accent2);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+      'Liberation Mono', monospace;
+      font-size: 12px;
+    }
+    .footer {
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 980px) {
+      .shell {
+        padding: 24px 16px 48px;
       }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "PingFang TC", "Microsoft JhengHei", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.65;
+      .topbar {
+        flex-direction: column;
       }
-      .container {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 40px 24px 64px;
+      .headline {
+        font-size: 28px;
       }
-      .header-row {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .version-menu {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        margin: 0 -16px;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        padding: 12px 16px;
+      }
+      .nav-list {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 12px;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: thin;
       }
-      .headline { margin: 0; font-size: 32px; font-weight: 700; }
-      .version-badge {
-        display: inline-block;
-        background: var(--accent);
-        color: #fff;
-        font-size: 13px;
-        font-weight: 600;
-        padding: 4px 12px;
-        border-radius: 999px;
-        margin-left: 8px;
-        vertical-align: middle;
+      .nav-link {
+        min-width: 210px;
+      }
+      .metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 560px) {
+      .headline {
+        font-size: 24px;
       }
       .lang-switch {
-        display: flex;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        overflow: hidden;
-        font-size: 13px;
+        width: 100%;
       }
       .lang-switch button {
-        border: none;
-        background: var(--card);
-        padding: 6px 14px;
-        cursor: pointer;
-        color: var(--muted);
+        flex: 1;
       }
-      .lang-switch button.active { background: var(--accent); color: #fff; }
-      .subline { margin: 8px 0 0; color: var(--muted); font-size: 15px; }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 12px;
-        margin: 28px 0 8px;
+      .release-head,
+      .release-body {
+        padding-left: 16px;
+        padding-right: 16px;
       }
-      .metric {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 16px;
+      .metrics {
+        grid-template-columns: 1fr;
       }
-      .metric .num {
-        display: block;
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--accent);
+      .release-title {
+        font-size: 21px;
       }
-      .metric .label { color: var(--muted); font-size: 13px; }
-      .note {
-        background: var(--accent-soft);
-        border: 1px solid #bfdbfe;
-        color: #1e3a8a;
-        padding: 14px 16px;
-        border-radius: 10px;
-        margin: 24px 0;
-        font-size: 14px;
-      }
-      .section { margin-top: 32px; }
-      .section > h2 {
-        font-size: 22px;
-        margin: 0 0 16px;
-        padding-bottom: 8px;
-        border-bottom: 2px solid var(--accent);
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 16px;
-      }
-      .card h3 { margin: 0 0 8px; font-size: 18px; }
-      .tags { margin: 0 0 12px; }
-      .tag {
-        display: inline-block;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        padding: 2px 10px;
-        margin: 0 6px 6px 0;
-        font-size: 12px;
-        color: var(--muted);
-        background: #f9fafb;
-      }
-      .tag.locale { border-color: #93c5fd; color: #1d4ed8; background: #eff6ff; }
-      .tag.fix { border-color: #fca5a5; color: #b91c1c; background: #fef2f2; }
-      .tag.merge { border-color: #fcd34d; color: #92400e; background: #fffbeb; }
-      .meta { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
-      ul { margin: 8px 0 0 20px; padding: 0; }
-      code {
-        background: #f3f4f6;
-        border-radius: 4px;
-        padding: 0 5px;
-        font-size: 12px;
-      }
-      .paths {
-        margin-top: 10px;
-        padding: 12px;
-        border: 1px dashed var(--border);
-        border-radius: 8px;
-        background: #fafafa;
-        font-size: 13px;
-      }
-      /* Timeline */
-      .timeline { position: relative; padding-left: 28px; }
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 8px;
-        top: 4px;
-        bottom: 4px;
-        width: 2px;
-        background: var(--border);
-      }
-      .timeline-item {
-        position: relative;
-        margin-bottom: 20px;
-        padding: 14px 16px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-      }
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: -24px;
-        top: 18px;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--accent);
-        border: 2px solid #fff;
-        box-shadow: 0 0 0 2px var(--accent);
-      }
-      .timeline-date {
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--accent);
-        margin-bottom: 4px;
-      }
-      .timeline-title { font-weight: 600; margin-bottom: 6px; }
-      .timeline-desc { font-size: 14px; color: var(--muted); margin: 0; }
-      .commit-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 13px;
-        background: var(--card);
-        border-radius: 10px;
-        overflow: hidden;
-        border: 1px solid var(--border);
-      }
-      .commit-table th {
-        background: #f9fafb;
-        text-align: left;
-        padding: 10px 12px;
-        border-bottom: 1px solid var(--border);
-        font-weight: 600;
-      }
-      .commit-table td {
-        padding: 8px 12px;
-        border-bottom: 1px solid #f3f4f6;
-        vertical-align: top;
-      }
-      .commit-table tr:last-child td { border-bottom: none; }
-      .commit-hash { font-family: monospace; color: var(--accent); font-size: 12px; }
-      .footer { margin-top: 28px; color: var(--muted); font-size: 13px; }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="header-row">
-        <h1 class="headline">
-          <span data-tw="雲樞企業AI平台 · DSJ 定制版" data-cn="云枢企业AI平台 · DSJ 定制版"></span>
-          <span class="version-badge">AI-Platform-v1.1.10-dsj</span>
-        </h1>
-        <div class="lang-switch">
-          <button id="btn-tw" class="active" onclick="switchLang('tw')">繁體中文</button>
-          <button id="btn-cn" onclick="switchLang('cn')">简体中文</button>
-        </div>
-      </div>
-      <p class="subline" data-tw="鼎盛佳（DSJ）客戶專屬發版說明 · 分支 <code>feature-8.7.x-dsj</code> · 基線 <code>AI-Platform-v1.1.10</code>" data-cn="鼎盛佳（DSJ）客户专属发版说明 · 分支 <code>feature-8.7.x-dsj</code> · 基线 <code>AI-Platform-v1.1.10</code>"></p>
-
-      <div class="grid">
-        <div class="metric">
-          <span class="num">v1.1.10</span>
-          <span class="label" data-tw="本次發版版本" data-cn="本次发版版本"></span>
-        </div>
-        <div class="metric">
-          <span class="num">28+</span>
-          <span class="label" data-tw="繁體/多語系相關提交" data-cn="繁体/多语系相关提交"></span>
-        </div>
-        <div class="metric">
-          <span class="num">4</span>
-          <span class="label" data-tw="8.7.x 合併節點" data-cn="8.7.x 合并节点"></span>
-        </div>
-        <div class="metric">
-          <span class="num">5</span>
-          <span class="label" data-tw="DSJ 定制功能模組" data-cn="DSJ 定制功能模块"></span>
-        </div>
-      </div>
-
-      <div class="note" data-tw="本發版說明涵蓋自 <code>AI-Platform-v1.1.5-dsj</code> 以來，<code>feature-8.7.x-dsj</code> 分支上所有繁體中文（zh-TW）相關需求、缺陷修正，以及合併 <code>8.7.x</code> 主線後納入的多語系改善項目。統計基準提交：<code>AI-Platform-v1.1.5</code> → <code>feature-8.7.x-dsj</code> HEAD。" data-cn="本发版说明涵盖自 <code>AI-Platform-v1.1.5-dsj</code> 以来，<code>feature-8.7.x-dsj</code> 分支上所有繁体中文（zh-TW）相关需求、缺陷修正，以及合并 <code>8.7.x</code> 主线后纳入的多语系改善项目。统计基准提交：<code>AI-Platform-v1.1.5</code> → <code>feature-8.7.x-dsj</code> HEAD。"></div>
-
-      <!-- 發版摘要 -->
-      <div class="section">
-        <h2 data-tw="發版摘要" data-cn="发版摘要"></h2>
-        <div class="card">
-          <p data-tw="本次 <strong>AI-Platform-v1.1.10-dsj</strong> 為鼎盛佳客戶專屬版本，核心目標是完成繁體中文（台灣）全平台適配，並同步合併 8.7.x 主線最新穩定修正。主要工作包含：繁體詞條全量補齊與翻譯稽核、extension-dsj 多語系架構建置、國際化圖片資源完善、列印模組繁體接入，以及連結位址統一配置與行動端打包修正。" data-cn="本次 <strong>AI-Platform-v1.1.10-dsj</strong> 为鼎盛佳客户专属版本，核心目标是完成繁体中文（台湾）全平台适配，并同步合并 8.7.x 主线最新稳定修正。主要工作包含：繁体词条全量补齐与翻译稽核、extension-dsj 多语系架构建置、国际化图片资源完善、列印模块繁体接入，以及链接地址统一配置与移动端打包修正。"></p>
-        </div>
-      </div>
-
-      <!-- 工作歷程時間線 -->
-      <div class="section">
-        <h2 data-tw="工作歷程時間線" data-cn="工作历程时间线"></h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">2026-04-07</div>
-            <div class="timeline-title" data-tw="Phase 1 · 繁體中文詞條初版補齊" data-cn="Phase 1 · 繁体中文词条初版补齐"></div>
-            <p class="timeline-desc" data-tw="提交 <code>5cb0e99a6f8</code>：完成 Admin / Portal / Mobile / 表單 / 頁面元件等多模組繁體詞條初版更新，共 96 檔案、約 7,500 行變更。" data-cn="提交 <code>5cb0e99a6f8</code>：完成 Admin / Portal / Mobile / 表单 / 页面组件等多模块繁体词条初版更新，共 96 文件、约 7,500 行变更。"></p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2026-05-14 ~ 05-15</div>
-            <div class="timeline-title" data-tw="Phase 2 · extension-dsj 多語系架構建置" data-cn="Phase 2 · extension-dsj 多语系架构建置"></div>
-            <p class="timeline-desc" data-tw="提交 <code>6f2cc4cac7b</code>：建立 extension-dsj 的 admin / portal / mobile 三端公共國際化目錄，新增 zh-CN / en-US / zh-TW 三語入口；合併 <code>8.7.x</code> 基線（<code>c2ae4184de3</code>、<code>1da47cb88fa</code>）；發布 <code>AI-Platform-v1.1.5-dsj</code>。" data-cn="提交 <code>6f2cc4cac7b</code>：建立 extension-dsj 的 admin / portal / mobile 三端公共国际化目录，新增 zh-CN / en-US / zh-TW 三语入口；合并 <code>8.7.x</code> 基线（<code>c2ae4184de3</code>、<code>1da47cb88fa</code>）；发布 <code>AI-Platform-v1.1.5-dsj</code>。"></p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2026-05-16 ~ 05-18</div>
-            <div class="timeline-title" data-tw="Phase 3 · 連結配置中心與行動端修正" data-cn="Phase 3 · 链接配置中心与移动端修正"></div>
-            <p class="timeline-desc" data-tw="提交 <code>2cdcdd8514f</code>、<code>77f29d953d7</code>：整合設定新增連結位址統一配置；提交 <code>8f53483cc5c</code>：修正行動端 TS2345 打包錯誤。" data-cn="提交 <code>2cdcdd8514f</code>、<code>77f29d953d7</code>：集成设置新增链接地址统一配置；提交 <code>8f53483cc5c</code>：修正移动端 TS2345 打包错误。"></p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2026-05-22</div>
-            <div class="timeline-title" data-tw="Phase 4 · 合併 8.7.x 主線（第一輪）" data-cn="Phase 4 · 合并 8.7.x 主线（第一轮）"></div>
-            <p class="timeline-desc" data-tw="合併提交 <code>1c811a06730</code>、<code>20a7da89d08</code>：將 8.7.x 主線最新程式碼合入 DSJ 分支，納入多項缺陷修正與效能改善。" data-cn="合并提交 <code>1c811a06730</code>、<code>20a7da89d08</code>：将 8.7.x 主线最新代码合入 DSJ 分支，纳入多项缺陷修正与性能改善。"></p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2026-05-23 ~ 05-26</div>
-            <div class="timeline-title" data-tw="Phase 5 · 繁體翻譯稽核與圖片資源完善（8.7.x 主線）" data-cn="Phase 5 · 繁体翻译稽核与图片资源完善（8.7.x 主线）"></div>
-            <p class="timeline-desc" data-tw="由 zhoubbin 主導，完成 AI Platform 1.1.0 翻譯檢查四輪修正、二開語言包翻譯稽核、國際化圖片完整性完善（7 次提交）、三語差異補全、繁體圖片補充；jinltao 提交列印模組繁體接入 <code>e1b5c54fe58</code>。" data-cn="由 zhoubbin 主导，完成 AI Platform 1.1.0 翻译检查四轮修正、二开语言包翻译稽核、国际化图片完整性完善（7 次提交）、三语差异补全、繁体图片补充；jinltao 提交列印模块繁体接入 <code>e1b5c54fe58</code>。"></p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2026-05-29 ~ 06-03</div>
-            <div class="timeline-title" data-tw="Phase 6 · 合併 8.7.x 最新程式碼 &amp; 版本發布" data-cn="Phase 6 · 合并 8.7.x 最新代码 &amp; 版本发布"></div>
-            <p class="timeline-desc" data-tw="合併提交 <code>5713a2513ce</code>：合併 8.7.x 最新程式碼；同步版本號至 <code>AI-Platform-v1.1.7-dsj.1</code>，對齊主線 <code>AI-Platform-v1.1.10</code> 基線，正式發布 <code>AI-Platform-v1.1.10-dsj</code>。" data-cn="合并提交 <code>5713a2513ce</code>：合并 8.7.x 最新代码；同步版本号至 <code>AI-Platform-v1.1.7-dsj.1</code>，对齐主线 <code>AI-Platform-v1.1.10</code> 基线，正式发布 <code>AI-Platform-v1.1.10-dsj</code>。"></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 功能與修復清單 -->
-      <div class="section">
-        <h2 data-tw="功能與修復清單" data-cn="功能与修复清单"></h2>
-
-        <div class="card">
-          <h3 data-tw="01 · 繁體中文全量補齊與翻譯稽核" data-cn="01 · 繁体中文全量补齐与翻译稽核"></h3>
-          <p class="tags">
-            <span class="tag locale">LOCALE</span>
-            <span class="tag locale">zh-TW</span>
-            <span class="tag" data-tw="定制" data-cn="定制"></span>
-          </p>
-          <p class="meta" data-tw="核心提交：<code>5cb0e99a6f8</code>、<code>82ccd61379f</code> ~ <code>d5e84efbdaf</code>、<code>b70c0ba285e</code>" data-cn="核心提交：<code>5cb0e99a6f8</code>、<code>82ccd61379f</code> ~ <code>d5e84efbdaf</code>、<code>b70c0ba285e</code>"></p>
-          <ul>
-            <li data-tw="補齊 Admin / Portal / Mobile / 表單 / 頁面元件 / 計算規則等多模組繁體（zh-TW）詞條。" data-cn="补齐 Admin / Portal / Mobile / 表单 / 页面组件 / 计算规则等多模块繁体（zh-TW）词条。"></li>
-            <li data-tw="完成 AI Platform 1.1.0 翻譯檢查四輪修正（<code>2_</code> ~ <code>4_</code> 系列提交）。" data-cn="完成 AI Platform 1.1.0 翻译检查四轮修正（<code>2_</code> ~ <code>4_</code> 系列提交）。"></li>
-            <li data-tw="二開語言包翻譯檢查修正，統一關鍵業務詞彙表達。" data-cn="二开语言包翻译检查修正，统一关键业务词汇表达。"></li>
-            <li data-tw="修正視圖設計「資料限定範圍」繁體翻譯（<code>36d2d38a466</code>）。" data-cn="修正视图设计「数据限定范围」繁体翻译（<code>36d2d38a466</code>）。"></li>
-            <li data-tw="三語（zh-CN / en-US / zh-TW）預設語言差異補全（<code>b70c0ba285e</code>）。" data-cn="三语（zh-CN / en-US / zh-TW）预设语言差异补全（<code>b70c0ba285e</code>）。"></li>
-            <li data-tw="修正 #199616：部分場景繁體模式下仍顯示簡體中文（<code>82b1fb49df6</code>）。" data-cn="修正 #199616：部分场景繁体模式下仍显示简体中文（<code>82b1fb49df6</code>）。"></li>
-            <li data-tw="修正 #200460：繁體中文模式子表刪除按鈕顯示英文（<code>75fd7e311fb</code>）。" data-cn="修正 #200460：繁体中文模式子表删除按钮显示英文（<code>75fd7e311fb</code>）。"></li>
-          </ul>
-          <div class="paths">
-            <strong data-tw="關鍵路徑" data-cn="关键路径"></strong>
-            <ul>
-              <li><code>packages/extension-dsj/src/locale/</code></li>
-              <li><code>packages/cloudpivot-locale/</code></li>
-              <li><code>packages/cloudpivot-form/form/src/components/</code></li>
-              <li><code>packages/cloudpivot-page/src/ui-widgets/</code></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 data-tw="02 · 國際化圖片資源完善" data-cn="02 · 国际化图片资源完善"></h3>
-          <p class="tags">
-            <span class="tag locale">I18N-IMAGE</span>
-            <span class="tag locale">zh-TW</span>
-          </p>
-          <p class="meta" data-tw="核心提交：<code>7e5c8f130c3</code> ~ <code>02c5fef13ce</code>（8 次提交，2026-05-23 ~ 05-26）" data-cn="核心提交：<code>7e5c8f130c3</code> ~ <code>02c5fef13ce</code>（8 次提交，2026-05-23 ~ 05-26）"></p>
-          <ul>
-            <li data-tw="完善 Admin / Portal / Mobile 三端國際化引導圖片資源。" data-cn="完善 Admin / Portal / Mobile 三端国际化引导图片资源。"></li>
-            <li data-tw="切換語言後圖片渲染邏輯優化（<code>8f1df4bf22f</code>）。" data-cn="切换语言后图片渲染逻辑优化（<code>8f1df4bf22f</code>）。"></li>
-            <li data-tw="補充繁體版本圖片，移除已廢棄的 new-user-guide 元件圖片（<code>a69d06eee4c</code>、<code>7683c7d9a17</code>）。" data-cn="补充繁体版本图片，移除已废弃的 new-user-guide 组件图片（<code>a69d06eee4c</code>、<code>7683c7d9a17</code>）。"></li>
-            <li data-tw="暫以中文版本圖片替代缺失的繁體/英文圖片，確保介面完整性（<code>00cc2b876ad</code>）。" data-cn="暂以中文版本图片替代缺失的繁体/英文图片，确保界面完整性（<code>00cc2b876ad</code>）。"></li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3 data-tw="03 · 列印模組繁體接入" data-cn="03 · 列印模块繁体接入"></h3>
-          <p class="tags">
-            <span class="tag locale">PRINT</span>
-            <span class="tag locale">zh-TW</span>
-            <span class="tag" data-tw="定制" data-cn="定制"></span>
-          </p>
-          <p class="meta" data-tw="提交：<code>e1b5c54fe58</code> · 2026-05-26 · jinltao" data-cn="提交：<code>e1b5c54fe58</code> · 2026-05-26 · jinltao"></p>
-          <ul>
-            <li data-tw="列印模組接入繁體中文國際化，支援列印預覽、列印設定等場景的多語系顯示。" data-cn="列印模块接入繁体中文国际化，支持列印预览、列印设定等场景的多语系显示。"></li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3 data-tw="04 · extension-dsj 多語系架構" data-cn="04 · extension-dsj 多语系架构"></h3>
-          <p class="tags">
-            <span class="tag">I18N</span>
-            <span class="tag">REFACTOR</span>
-            <span class="tag" data-tw="定制" data-cn="定制"></span>
-          </p>
-          <p class="meta" data-tw="提交：<code>6f2cc4cac7b</code> · 87 檔案 · 約 17,000 行" data-cn="提交：<code>6f2cc4cac7b</code> · 87 文件 · 约 17,000 行"></p>
-          <ul>
-            <li data-tw="建立 extension-dsj 的 admin / portal / mobile 公共國際化目錄結構。" data-cn="建立 extension-dsj 的 admin / portal / mobile 公共国际化目录结构。"></li>
-            <li data-tw="新增 zh-CN / en-US / zh-TW 三語入口，支援定制詞條獨立維護。" data-cn="新增 zh-CN / en-US / zh-TW 三语入口，支持定制词条独立维护。"></li>
-            <li data-tw="更新 cloudpivot-locale 三端 index 合併邏輯，執行時自動融合 extension-dsj 資源。" data-cn="更新 cloudpivot-locale 三端 index 合并逻辑，运行时自动融合 extension-dsj 资源。"></li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3 data-tw="05 · 連結位址統一配置中心" data-cn="05 · 链接地址统一配置中心"></h3>
-          <p class="tags">
-            <span class="tag">FEATURE</span>
-            <span class="tag">CONFIG</span>
-            <span class="tag" data-tw="定制" data-cn="定制"></span>
-          </p>
-          <p class="meta" data-tw="提交：<code>2cdcdd8514f</code>、<code>77f29d953d7</code> · 23 檔案" data-cn="提交：<code>2cdcdd8514f</code>、<code>77f29d953d7</code> · 23 文件"></p>
-          <ul>
-            <li data-tw="系統「整合設定」新增連結位址配置，統一管理 11 類說明/指引連結。" data-cn="系统「集成设置」新增链接地址配置，统一管理 11 类帮助/指引链接。"></li>
-            <li data-tw="核心實作下沉至 extension-dsj，主工程改為引入呼叫。" data-cn="核心实现下沉至 extension-dsj，主工程改为引入调用。"></li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3 data-tw="06 · 行動端打包錯誤修正（TS2345）" data-cn="06 · 移动端打包错误修正（TS2345）"></h3>
-          <p class="tags">
-            <span class="tag fix">FIX</span>
-            <span class="tag">MOBILE</span>
-          </p>
-          <p class="meta" data-tw="提交：<code>8f53483cc5c</code> · 4 檔案" data-cn="提交：<code>8f53483cc5c</code> · 4 文件"></p>
-          <ul>
-            <li data-tw="修正 task-hall 場景中 <code>ConditionGroupParser</code> 參數類型不相容問題，解除行動端打包阻塞。" data-cn="修正 task-hall 场景中 <code>ConditionGroupParser</code> 参数类型不兼容问题，解除移动端打包阻塞。"></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- 合併記錄 -->
-      <div class="section">
-        <h2 data-tw="8.7.x 合併記錄" data-cn="8.7.x 合并记录"></h2>
-        <table class="commit-table">
-          <thead>
-            <tr>
-              <th data-tw="日期" data-cn="日期"></th>
-              <th data-tw="提交" data-cn="提交"></th>
-              <th data-tw="說明" data-cn="说明"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2026-05-29</td>
-              <td><span class="commit-hash">5713a2513ce</span></td>
-              <td data-tw="合併 8.7.x 最新程式碼（含 v1.1.7 ~ v1.1.10 主線修正）" data-cn="合并 8.7.x 最新代码（含 v1.1.7 ~ v1.1.10 主线修正）"></td>
-            </tr>
-            <tr>
-              <td>2026-05-22</td>
-              <td><span class="commit-hash">1c811a06730</span></td>
-              <td data-tw="Merge branch '8.7.x' into feature-8.7.x-dsj" data-cn="Merge branch '8.7.x' into feature-8.7.x-dsj"></td>
-            </tr>
-            <tr>
-              <td>2026-05-22</td>
-              <td><span class="commit-hash">20a7da89d08</span></td>
-              <td data-tw="合併 8.7.x 程式碼" data-cn="合并 8.7.x 代码"></td>
-            </tr>
-            <tr>
-              <td>2026-05-15</td>
-              <td><span class="commit-hash">1da47cb88fa</span></td>
-              <td data-tw="Merge branch '8.7.x' into feature-8.7.x-dsj（v1.1.5-dsj 基線合併）" data-cn="Merge branch '8.7.x' into feature-8.7.x-dsj（v1.1.5-dsj 基线合并）"></td>
-            </tr>
-            <tr>
-              <td>2026-05-14</td>
-              <td><span class="commit-hash">c2ae4184de3</span></td>
-              <td data-tw="合併 8.7.x 程式碼（squash）" data-cn="合并 8.7.x 代码（squash）"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- 繁體相關提交記錄 -->
-      <div class="section">
-        <h2 data-tw="繁體中文 / 多語系提交記錄" data-cn="繁体中文 / 多语系提交记录"></h2>
-        <table class="commit-table">
-          <thead>
-            <tr>
-              <th data-tw="日期" data-cn="日期"></th>
-              <th data-tw="提交" data-cn="提交"></th>
-              <th data-tw="說明" data-cn="说明"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2026-06-03</td>
-              <td><span class="commit-hash">1a152ead779</span></td>
-              <td data-tw="docs: 更新版本" data-cn="docs: 更新版本"></td>
-            </tr>
-            <tr>
-              <td>2026-05-29</td>
-              <td><span class="commit-hash">91187cbce13</span></td>
-              <td data-tw="docs: 同步版本號" data-cn="docs: 同步版本号"></td>
-            </tr>
-            <tr>
-              <td>2026-05-26</td>
-              <td><span class="commit-hash">e1b5c54fe58</span></td>
-              <td data-tw="docs: 列印接入繁體的國際化" data-cn="docs: 列印接入繁体的国际化"></td>
-            </tr>
-            <tr>
-              <td>2026-05-26</td>
-              <td><span class="commit-hash">b70c0ba285e</span></td>
-              <td data-tw="refactor: 國際化預設三種語言檢查差異補全" data-cn="refactor: 国际化默认三种语言检查差异补全"></td>
-            </tr>
-            <tr>
-              <td>2026-05-26</td>
-              <td><span class="commit-hash">02c5fef13ce</span></td>
-              <td data-tw="refactor: 國際化翻譯繁體檢查-繁體圖片補充" data-cn="refactor: 国际化翻译繁体检查-繁体图片补充"></td>
-            </tr>
-            <tr>
-              <td>2026-05-25</td>
-              <td><span class="commit-hash">a69d06eee4c</span></td>
-              <td data-tw="refactor: 國際化繁體檢查-補充繁體版本的圖片" data-cn="refactor: 国际化繁体检查-补充繁体版本的图片"></td>
-            </tr>
-            <tr>
-              <td>2026-05-25</td>
-              <td><span class="commit-hash">7683c7d9a17</span></td>
-              <td data-tw="refactor: 補充國際化繁體版本的圖片" data-cn="refactor: 补充国际化繁体版本的图片"></td>
-            </tr>
-            <tr>
-              <td>2026-05-25</td>
-              <td><span class="commit-hash">36d2d38a466</span></td>
-              <td data-tw="docs: 修正視圖設計-資料限定範圍-國際化-繁體" data-cn="docs: 修正视图设计-数据限定范围-国际化-繁体"></td>
-            </tr>
-            <tr>
-              <td>2026-05-25</td>
-              <td><span class="commit-hash">d5e84efbdaf</span></td>
-              <td data-tw="refactor: 國際化繁體檢查-修正專案報告中未提及的繁體翻譯" data-cn="refactor: 国际化繁体检查-修正项目报告中未提及的繁体翻译"></td>
-            </tr>
-            <tr>
-              <td>2026-05-25</td>
-              <td><span class="commit-hash">82ccd61379f</span></td>
-              <td data-tw="refactor: 1_AI_platform_1.1.0_翻譯檢查修正" data-cn="refactor: 1_AI_platform_1.1.0_翻译检查修正"></td>
-            </tr>
-            <tr>
-              <td>2026-05-25</td>
-              <td><span class="commit-hash">a5dfa9ce732</span></td>
-              <td data-tw="refactor: 2_AI_platform_1.1.0_翻譯檢查修正" data-cn="refactor: 2_AI_platform_1.1.0_翻译检查修正"></td>
-            </tr>
-            <tr>
-              <td>2026-05-25</td>
-              <td><span class="commit-hash">c5d43356ebf</span></td>
-              <td data-tw="refactor: 3_AI_platform_1.1.0_翻譯檢查修正" data-cn="refactor: 3_AI_platform_1.1.0_翻译检查修正"></td>
-            </tr>
-            <tr>
-              <td>2026-05-25</td>
-              <td><span class="commit-hash">3037b59301c</span></td>
-              <td data-tw="refactor: 4_二開語言包翻譯檢查修正" data-cn="refactor: 4_二开语言包翻译检查修正"></td>
-            </tr>
-            <tr>
-              <td>2026-05-23</td>
-              <td><span class="commit-hash">7e5c8f130c3</span> ~ <code>8f1df4bf22f</code></td>
-              <td data-tw="refactor: 國際化圖片完整性完善（7 次提交）" data-cn="refactor: 国际化图片完整性完善（7 次提交）"></td>
-            </tr>
-            <tr>
-              <td>2026-05-21</td>
-              <td><span class="commit-hash">43eb898ff05</span></td>
-              <td data-tw="test: 國際化補全" data-cn="test: 国际化补全"></td>
-            </tr>
-            <tr>
-              <td>2026-05-14</td>
-              <td><span class="commit-hash">6f2cc4cac7b</span></td>
-              <td data-tw="docs: 更新國際化引入方式（extension-dsj 架構）" data-cn="docs: 更新国际化引入方式（extension-dsj 架构）"></td>
-            </tr>
-            <tr>
-              <td>2026-04-13</td>
-              <td><span class="commit-hash">75fd7e311fb</span></td>
-              <td data-tw="fix: #200460 繁體中文模式子表刪除按鈕顯示英文" data-cn="fix: #200460 繁体中文模式子表删除按钮显示英文"></td>
-            </tr>
-            <tr>
-              <td>2026-04-07</td>
-              <td><span class="commit-hash">82b1fb49df6</span></td>
-              <td data-tw="fix: #199616 繁體中文模式下仍顯示簡體中文" data-cn="fix: #199616 繁体中文模式下仍显示简体中文"></td>
-            </tr>
-            <tr>
-              <td>2026-04-07</td>
-              <td><span class="commit-hash">5cb0e99a6f8</span></td>
-              <td data-tw="docs: 多語言繁體中文更新（初版全量補齊）" data-cn="docs: 多语言繁体中文更新（初版全量补齐）"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="footer" data-tw="定制套件版本：<code>extension-dsj@1.1.4-ai-platform-dsj.3</code> · 主工程版本：<code>AI-Platform-v1.1.7-dsj.1</code> · 對齊主線：<code>AI-Platform-v1.1.10</code> · 發版日期：2026-06-03" data-cn="定制包版本：<code>extension-dsj@1.1.4-ai-platform-dsj.3</code> · 主工程版本：<code>AI-Platform-v1.1.7-dsj.1</code> · 对齐主线：<code>AI-Platform-v1.1.10</code> · 发版日期：2026-06-03"></p>
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div>
+      <p class="eyebrow" data-i18n="eyebrow"></p>
+      <h1 class="headline" data-i18n="headline"></h1>
+      <p class="subline" data-i18n="subline"></p>
     </div>
-
-    <script>
-      function switchLang(lang) {
-        document.querySelectorAll("[data-tw]").forEach(function (el) {
-          el.innerHTML = el.getAttribute("data-" + lang);
-        });
-        document.getElementById("btn-tw").classList.toggle("active", lang === "tw");
-        document.getElementById("btn-cn").classList.toggle("active", lang === "cn");
-        document.documentElement.lang = lang === "tw" ? "zh-TW" : "zh-CN";
-        localStorage.setItem("dsj-changelog-lang", lang);
+    <div class="lang-switch" aria-label="Language switch">
+      <button id="btn-tw" type="button" class="active" data-lang="tw">
+        繁體中文</button
+      ><button id="btn-cn" type="button" data-lang="cn">简体中文</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="version-menu" aria-label="Release versions">
+      <p class="menu-title" data-i18n="menuTitle"></p>
+      <nav id="version-nav" class="nav-list"></nav>
+    </aside>
+    <main id="release-content" class="content"></main>
+  </div>
+  <p class="footer" data-i18n="footer"></p>
+</div>
+<script>
+  var currentLang = localStorage.getItem('dsj-changelog-lang') || 'tw';
+  var copy = {
+    eyebrow: { tw: 'DSJ 定製版發佈中心', cn: 'DSJ 定制版发布中心' },
+    headline: {
+      tw: '雲樞企業 AI 平台 · DSJ 定製版版本升級說明',
+      cn: '云枢企业 AI 平台 · DSJ 定制版版本升级说明',
+    },
+    subline: {
+      tw: '依版本倒序整理四次已對外發佈的 DSJ 發版說明，可直接作為外發流水線 index.html 使用。',
+      cn: '按版本倒序整理四次已对外发布的 DSJ 发版说明，可直接作为外发流水线 index.html 使用。',
+    },
+    menuTitle: { tw: '版本選單', cn: '版本菜单' },
+    sourceTitle: { tw: '提交與來源依據', cn: '提交与来源依据' },
+    sourceCol: { tw: '來源', cn: '来源' },
+    detailCol: { tw: '說明', cn: '说明' },
+    footer: {
+      tw: '本頁為 DSJ 定製版功能變更摘要，內容按當時對外發版口徑整理；實際功能以目前部署版本與交付包為準。',
+      cn: '本页为 DSJ 定制版功能变更摘要，内容按当时对外发版口径整理；实际功能以当前部署版本与交付包为准。',
+    },
+  };
+  var releases = [
+    {
+      id: 'ai-platform-v1-1-11-dsj-2',
+      version: 'AI-Platform-v1.1.11-dsj.2',
+      date: { tw: '2026-06-29 發版', cn: '2026-06-29 发版' },
+      badge: { tw: '目前版本', cn: '当前版本' },
+      meta: {
+        tw: '版本升級範圍：AI-Platform-v1.1.9-dsj.3 至 AI-Platform-v1.1.11-dsj.2。提交定位：ad968485f27 至 8c638de0972。',
+        cn: '版本升级范围：AI-Platform-v1.1.9-dsj.3 至 AI-Platform-v1.1.11-dsj.2。提交定位：ad968485f27 至 8c638de0972。',
+      },
+      metrics: [
+        { num: '7', label: { tw: '更新內容', cn: '更新内容' } },
+        { num: '5', label: { tw: '能力增強', cn: '能力增强' } },
+        { num: '2', label: { tw: '平台基礎升級', cn: '平台基础升级' } },
+        { num: '1', label: { tw: '交付設定治理', cn: '交付配置治理' } },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.11-dsj.2 以聯合發版內容為準，補齊前端、後端與第三方整合側的完整交付說明。除前端定製能力外，本版本同步納入 Azure Redis 雲端適配、Google OCR、OpenAI ASR、LINE、電子簽章、綠界電子發票、RAG 評估與繁體化治理等能力。',
+        cn: '本次 AI-Platform-v1.1.11-dsj.2 以联合发版内容为准，补齐前端、后端与第三方集成侧的完整交付说明。除前端定制能力外，本版本同步纳入 Azure Redis 云端适配、Google OCR、OpenAI ASR、LINE、电子签章、绿界电子发票、RAG 评估与繁体化治理等能力。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 版本基線與交付包升級',
+            cn: '01 · 版本基线与交付包升级',
+          },
+          tags: ['BASELINE', 'DEPENDENCY'],
+          items: [
+            {
+              tw: '根版本由 <code>AI-Platform-v1.1.9-dsj.3</code> 升級至 <code>AI-Platform-v1.1.11-dsj.2</code>，本次 DSJ 發版包完成到 1.1.11 基線的對齊。',
+              cn: '根版本由 <code>AI-Platform-v1.1.9-dsj.3</code> 升级至 <code>AI-Platform-v1.1.11-dsj.2</code>，本次 DSJ 发版包完成到 1.1.11 基线的对齐。',
+            },
+            {
+              tw: '核心依賴升級：<code>redisson</code> 3.17.6 升至 3.52.0，<code>kryo</code> 4.0.2 升至 5.6.2，並新增 <code>azure-identity 1.18.4</code>、<code>azure-core 1.58.1</code>、<code>redis.authx.entraid 0.0.1</code> 等 Azure 相關依賴。',
+              cn: '核心依赖升级：<code>redisson</code> 3.17.6 升至 3.52.0，<code>kryo</code> 4.0.2 升至 5.6.2，并新增 <code>azure-identity 1.18.4</code>、<code>azure-core 1.58.1</code>、<code>redis.authx.entraid 0.0.1</code> 等 Azure 相关依赖。',
+            },
+            {
+              tw: '管理後台、門戶、行動端、表單、設計器、列表、AI 與 DSJ 擴充包等依賴同步切換至對應定製包版本。',
+              cn: '管理后台、门户、移动端、表单、设计器、列表、AI 与 DSJ 扩展包等依赖同步切换至对应定制包版本。',
+            },
+            {
+              tw: '報表與列印相關能力完成配套包升級，列印版本推進至 2.8.89，報表版本推進至 6.3.1-alpha.55。',
+              cn: '报表与打印相关能力完成配套包升级，打印版本推进至 2.8.89，报表版本推进至 6.3.1-alpha.55。',
+            },
+          ],
+        },
+        {
+          title: { tw: '02 · 第三方服務整合', cn: '02 · 第三方服务集成' },
+          tags: ['OCR', 'ASR', 'LINE', 'ECPAY'],
+          items: [
+            {
+              tw: 'Google OCR 完成影像與文件識別能力對接，優化識別結果結構，並迭代影像預處理、識別準確率與結果欄位標準化。',
+              cn: 'Google OCR 完成图片与文件识别能力对接，优化识别结果结构，并迭代图片预处理、识别准确率与结果字段标准化。',
+            },
+            {
+              tw: '整合 OpenAI 語音轉文字能力，識別結果可寫入 AI 模型上下文，支援語音驅動的後續 AI 處理。',
+              cn: '集成 OpenAI 语音转文字能力，识别结果可写入 AI 模型上下文，支持语音驱动的后续 AI 处理。',
+            },
+            {
+              tw: 'LINE 訊息通知支援待辦與流程狀態推播；管理員可解除使用者 LINE 綁定並清理登入狀態；行動端與管理端的 LINE 帳號綁定狀態展示保持一致。',
+              cn: 'LINE 消息通知支持待办与流程状态推送；管理员可解除用户 LINE 绑定并清理登录状态；移动端与管理端的 LINE 账号绑定状态展示保持一致。',
+            },
+            {
+              tw: '電子簽章完成介面欄位、加密簽章、回呼驗簽、狀態同步與列印資訊欄位補充；簽署進度改為直接展示簽章服務返回的簽署人、擬稿人與狀態。',
+              cn: '电子签章完成接口字段、加密签章、回调验签、状态同步与打印信息字段补充；签署进度改为直接展示签章服务返回的签署人、拟稿人与状态。',
+            },
+            {
+              tw: '綠界科技 Ecpay 電子發票完成發票開立、作廢、查詢等功能模組整合，包含介面欄位調整、簽章驗證、回呼處理與錯誤重試。',
+              cn: '绿界科技 Ecpay 电子发票完成发票开立、作废、查询等功能模块集成，包含接口字段调整、签章校验、回调处理与错误重试。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · Azure Redis 雲端適配',
+            cn: '03 · Azure Redis 云端适配',
+          },
+          tags: ['AZURE', 'REDIS'],
+          items: [
+            {
+              tw: '適配 Azure Redis 統一租戶管理平台，提供可在多雲環境下運行的快取層。',
+              cn: '适配 Azure Redis 统一租户管理平台，提供可在多云环境下运行的缓存层。',
+            },
+            {
+              tw: '新增 <code>RedisInitializer</code>、<code>RedisProvider</code>、<code>RedisPropConfig</code>、<code>AzureRedisInitializer</code>、<code>AzureRedisCredentialsResolver</code> 等核心組件。',
+              cn: '新增 <code>RedisInitializer</code>、<code>RedisProvider</code>、<code>RedisPropConfig</code>、<code>AzureRedisInitializer</code>、<code>AzureRedisCredentialsResolver</code> 等核心组件。',
+            },
+            {
+              tw: '全專案統一改用 <code>RedisProvider.getInstance().getStringRedisTemplate()</code> 取得 Redis 連線，並由自訂配置接管 <code>CloudPivotLaunch</code> 的 Redis 初始化。',
+              cn: '全项目统一改用 <code>RedisProvider.getInstance().getStringRedisTemplate()</code> 获取 Redis 连接，并由自定义配置接管 <code>CloudPivotLaunch</code> 的 Redis 初始化。',
+            },
+          ],
+        },
+        {
+          title: { tw: '04 · AI 平台功能擴充', cn: '04 · AI 平台功能扩展' },
+          tags: ['RAG', 'AI', 'I18N'],
+          items: [
+            {
+              tw: '新增檢索增強生成 RAG 評估指標與工具，便於衡量 AI 回答品質並支援後續模型調優。',
+              cn: '新增检索增强生成 RAG 评估指标与工具，便于衡量 AI 回答质量并支持后续模型调优。',
+            },
+            {
+              tw: 'AI 平台提示詞、技能描述、系統訊息支援繁體中文；技能名稱與描述針對繁體環境做映射，非繁體環境保留原文。',
+              cn: 'AI 平台提示词、技能描述、系统消息支持繁体中文；技能名称与描述针对繁体环境做映射，非繁体环境保留原文。',
+            },
+            {
+              tw: 'AI 平台隱藏 MCP 市場入口，避免使用者進入未交付或暫不開放的市場頁面。',
+              cn: 'AI 平台隐藏 MCP 市场入口，避免用户进入未交付或暂不开放的市场页面。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '05 · 鼎盛佳客戶繁體化專案',
+            cn: '05 · 鼎盛佳客户繁体化项目',
+          },
+          tags: ['zh-TW', '#205867'],
+          items: [
+            {
+              tw: '針對 dsj 客戶大量文案進行繁體中文化，涵蓋角色管理、日誌監控、報表模組、權限模組與擴充組件。',
+              cn: '针对 dsj 客户大量文案进行繁体中文化，覆盖角色管理、日志监控、报表模块、权限模块与扩展组件。',
+            },
+            {
+              tw: '補齊 <code>messages_zh_TW.properties</code> 多項缺失鍵，並按 <code>code</code> 動態查詢繁體名稱與描述。',
+              cn: '补齐 <code>messages_zh_TW.properties</code> 多项缺失键，并按 <code>code</code> 动态查询繁体名称与描述。',
+            },
+            {
+              tw: '<code>LogOperationActionType</code>、<code>LogOperationLocationType</code> 枚舉移除硬編碼中文，改由 <code>LogMessageI18nConverter</code> 動態依語系解析。',
+              cn: '<code>LogOperationActionType</code>、<code>LogOperationLocationType</code> 枚举移除硬编码中文，改由 <code>LogMessageI18nConverter</code> 动态按语系解析。',
+            },
+            {
+              tw: '持續統一繁體中文用語，例如將管理端高頻「配置」調整為「設定」，提升 DSJ 繁體環境下的閱讀一致性。',
+              cn: '持续统一繁体中文用语，例如将管理端高频“配置”调整为“設定”，提升 DSJ 繁体环境下的阅读一致性。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '06 · 國際化多語言完善',
+            cn: '06 · 国际化多语言完善',
+          },
+          tags: ['I18N', 'LOCALE'],
+          items: [
+            {
+              tw: '完成 #205541、#205536、#205445、#205546、#205447、#206119、#205545 等繁體化與多語言修復項。',
+              cn: '完成 #205541、#205536、#205445、#205546、#205447、#206119、#205545 等繁体化与多语言修复项。',
+            },
+            {
+              tw: '<code>extension-dsj</code> 國際化入口重構至統一 <code>src/locale</code> 目錄，管理後台、門戶與行動端定製文案按端側集中維護。',
+              cn: '<code>extension-dsj</code> 国际化入口重构至统一 <code>src/locale</code> 目录，管理后台、门户与移动端定制文案按端侧集中维护。',
+            },
+            {
+              tw: '補齊 LINE 綁定、LINE 通知、行動端批次列印、業務規則等定製能力的繁體中文、簡體中文與英文文案。',
+              cn: '补齐 LINE 绑定、LINE 通知、移动端批量打印、业务规则等定制能力的繁体中文、简体中文与英文文案。',
+            },
+            {
+              tw: '定製文案從平台通用語言包中拆分管理，降低後續標品升級時覆蓋 DSJ 專屬文案的風險。',
+              cn: '定制文案从平台通用语言包中拆分管理，降低后续标品升级时覆盖 DSJ 专属文案的风险。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '07 · 連結入口與交付設定治理',
+            cn: '07 · 链接入口与交付配置治理',
+          },
+          tags: ['LINK', 'GOVERNANCE'],
+          items: [
+            {
+              tw: '依據客戶最新《連結更新說明.pdf》重新整理 DSJ 連結設定項。',
+              cn: '依据客户最新《链接更新说明.pdf》重新整理 DSJ 链接配置项。',
+            },
+            {
+              tw: '隱藏不再交付的持久化模型、操作指引等連結設定入口，避免管理端暴露無效或不需維護的外部連結。',
+              cn: '隐藏不再交付的持久化模型、操作指引等链接配置入口，避免管理端暴露无效或不需维护的外部链接。',
+            },
+            {
+              tw: '移除 IFrame 控制項與引導說明中的預設外部範例連結，降低跳轉到非交付頁面的風險。',
+              cn: '移除 IFrame 控件与引导说明中的默认外部示例链接，降低跳转到非交付页面的风险。',
+            },
+            {
+              tw: '系統語言與整合設定相關入口補齊 DSJ 定製連結邏輯，報表設計設定中隱藏資料分析倉輸出能力。',
+              cn: '系统语言与集成设置相关入口补齐 DSJ 定制链接逻辑，报表设计配置中隐藏数据分析仓输出能力。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: 'pasted-text.txt',
+          detail: {
+            tw: '本次聯合發版內容來源，優先於目前 HTML 中偏前端側的單版本摘要。',
+            cn: '本次联合发版内容来源，优先于当前 HTML 中偏前端侧的单版本摘要。',
+          },
+        },
+        {
+          source: 'ad968485f27..8c638de0972',
+          detail: {
+            tw: '從 AI-Platform-v1.1.9-dsj.3 修改包至 AI-Platform-v1.1.11-dsj.2 發版包的提交範圍。',
+            cn: '从 AI-Platform-v1.1.9-dsj.3 修改包至 AI-Platform-v1.1.11-dsj.2 发版包的提交范围。',
+          },
+        },
+        {
+          source: '20343ce417e / f573d9f5a28 / de3daec18bb',
+          detail: {
+            tw: '行動端批次列印、列印內部路徑與 engineCode 依賴調整。',
+            cn: '移动端批量打印、打印内部路径与 engineCode 依赖调整。',
+          },
+        },
+        {
+          source: 'e9f43dc5c61 / 6cc4f8838d4 / 4f18034e7d5',
+          detail: {
+            tw: 'LINE 訊息通道、業務規則 LINE 與管理端綁定解綁能力。',
+            cn: 'LINE 消息通道、业务规则 LINE 与管理端绑定解绑能力。',
+          },
+        },
+        {
+          source: '1328a35628f / 1ddf507037e',
+          detail: {
+            tw: '電子簽章進度展示重構、MCP 市場隱藏與簽章配合調整。',
+            cn: '电子签章进度展示重构、MCP 市场隐藏与签章配合调整。',
+          },
+        },
+        {
+          source: 'cf3f5964eaf / 067ad97a7a2',
+          detail: {
+            tw: '客戶連結更新說明與報表設定項治理。',
+            cn: '客户链接更新说明与报表配置项治理。',
+          },
+        },
+      ],
+    },
+    {
+      id: 'ai-platform-v1-1-9-dsj-3',
+      version: 'AI-Platform-v1.1.9-dsj.3',
+      date: { tw: '2026-06-13 發版', cn: '2026-06-13 发版' },
+      badge: { tw: '上一版本', cn: '上一版本' },
+      meta: {
+        tw: '版本升級範圍：AI-Platform-v1.1.5-dsj 至 AI-Platform-v1.1.9-dsj.3。版本號由 ad968485f27:package.json 確認。',
+        cn: '版本升级范围：AI-Platform-v1.1.5-dsj 至 AI-Platform-v1.1.9-dsj.3。版本号由 ad968485f27:package.json 确认。',
+      },
+      metrics: [
+        { num: '4', label: { tw: '更新內容', cn: '更新内容' } },
+        { num: '3', label: { tw: '覆蓋端側', cn: '覆盖端侧' } },
+        { num: '2', label: { tw: '能力增強', cn: '能力增强' } },
+        { num: '1', label: { tw: '體驗調整', cn: '体验调整' } },
+      ],
+      summary: {
+        tw: '本版本保留當時 AI-Platform-v1.1.9-dsj.3 對外發版說明的原始口徑，聚焦 DSJ 定製版對使用方可感知的新增與調整內容，包含繁體中文體驗、說明連結治理、表單數值幣別與地圖控制項調整。',
+        cn: '本版本保留当时 AI-Platform-v1.1.9-dsj.3 对外发版说明的原始口径，聚焦 DSJ 定制版对使用方可感知的新增与调整内容，包含繁体中文体验、说明链接治理、表单数值币别与地图控件调整。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 繁體中文體驗補齊',
+            cn: '01 · 繁体中文体验补齐',
+          },
+          tags: ['I18N', 'UX'],
+          items: [
+            {
+              tw: '補齊管理後台、門戶、行動端、表單、流程、頁面設計器等場景中的繁體中文文案。',
+              cn: '补齐管理后台、门户、移动端、表单、流程、页面设计器等场景中的繁体中文文案。',
+            },
+            {
+              tw: '統一高頻業務詞彙表達，減少同一功能在不同頁面出現簡繁混用或語義不一致的情況。',
+              cn: '统一高频业务词汇表达，减少同一功能在不同页面出现简繁混用或语义不一致的情况。',
+            },
+            {
+              tw: '優化報表與列印相關繁體顯示，提升繁體語言環境下的檢視、設計與輸出一致性。',
+              cn: '优化报表与打印相关繁体显示，提升繁体语言环境下的查看、设计与输出一致性。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · 說明與幫助連結統一治理',
+            cn: '02 · 说明与帮助链接统一治理',
+          },
+          tags: ['LINK', 'CONFIG'],
+          items: [
+            {
+              tw: '客服、使用手冊、影片教學、開發者手冊、更新日誌、操作指引等入口統一整理。',
+              cn: '客服、使用手册、视频教程、开发者手册、更新日志、操作指引等入口统一整理。',
+            },
+            {
+              tw: '清理不適用於目前交付環境的預設外部連結，避免跳轉到無效或不相關頁面。',
+              cn: '清理不适用于当前交付环境的默认外部链接，避免跳转到无效或不相关页面。',
+            },
+            {
+              tw: '未設定連結的入口不再展示，介面只保留可用的說明與幫助入口。',
+              cn: '未配置链接的入口不再展示，界面只保留可用的说明与帮助入口。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · 數值控制項新增台幣與馬來西亞幣',
+            cn: '03 · 数值控件新增台币与马来西亚币',
+          },
+          tags: ['FORM', 'CURRENCY'],
+          items: [
+            {
+              tw: '數值控制項的顯示格式新增台幣 <code>NT$</code> 與馬來西亞幣 <code>RM</code>。',
+              cn: '数值控件的显示格式新增台币 <code>NT$</code> 与马来西亚币 <code>RM</code>。',
+            },
+            {
+              tw: '新增幣別支援 2 到 8 位小數展示，滿足更多金額精度需求。',
+              cn: '新增币别支持 2 到 8 位小数展示，满足更多金额精度需求。',
+            },
+            {
+              tw: '表單設計、表單填寫、列表展示、統計與列印輸出中的數值格式保持一致。',
+              cn: '表单设计、表单填写、列表展示、统计与打印输出中的数值格式保持一致。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · 地址控制項調整為地圖控制項',
+            cn: '04 · 地址控件调整为地图控件',
+          },
+          tags: ['FORM', 'MAP'],
+          items: [
+            {
+              tw: '原「地址」控制項展示名稱調整為「地圖」，功能描述更貼近地圖定位與位置選擇場景。',
+              cn: '原“地址”控件展示名称调整为“地图”，功能描述更贴近地图定位与位置选择场景。',
+            },
+            {
+              tw: '新增與設定表單時，不再暴露舊地址模式，降低設定選項理解成本。',
+              cn: '新建与配置表单时，不再暴露旧地址模式，降低配置选项理解成本。',
+            },
+            {
+              tw: '既有表單保留相容處理，不影響已設定欄位的正常展示與使用。',
+              cn: '既有表单保留兼容处理，不影响已配置字段的正常展示与使用。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: 'ad968485f27:package.json',
+          detail: {
+            tw: '確認主工程版本號為 AI-Platform-v1.1.9-dsj.3。',
+            cn: '确认主工程版本号为 AI-Platform-v1.1.9-dsj.3。',
+          },
+        },
+        {
+          source: '187fec238ac:docs/CHANGELOG.html',
+          detail: {
+            tw: '恢復上一版 HTML 的原始發版口徑與四項對外內容。',
+            cn: '恢复上一版 HTML 的原始发版口径与四项对外内容。',
+          },
+        },
+        {
+          source: '187fec238ac / 2e66177e988',
+          detail: {
+            tw: '合併 8.7.x 最新程式碼並更新版本號。',
+            cn: '合并 8.7.x 最新代码并更新版本号。',
+          },
+        },
+      ],
+    },
+    {
+      id: 'ai-platform-v1-1-7-dsj-1',
+      version: 'AI-Platform-v1.1.7-dsj.1',
+      date: { tw: '2026-06-03 發版包', cn: '2026-06-03 发版包' },
+      badge: {
+        tw: '對齊 AI-Platform-v1.1.10 基線',
+        cn: '对齐 AI-Platform-v1.1.10 基线',
+      },
+      meta: {
+        tw: '包版本由 frontend-v.feature-8.7.x-dsj_20260603194417.zip 中 frontend/package.json 確認；舊流水線頁面中 AI-Platform-v1.1.10-dsj 僅作主線基線說明。',
+        cn: '包版本由 frontend-v.feature-8.7.x-dsj_20260603194417.zip 中 frontend/package.json 确认；旧流水线页面中 AI-Platform-v1.1.10-dsj 仅作主线基线说明。',
+      },
+      metrics: [
+        { num: 'v1.1.7', label: { tw: '本次發版包', cn: '本次发版包' } },
+        {
+          num: '28+',
+          label: { tw: '繁體/多語系提交', cn: '繁体/多语系提交' },
+        },
+        { num: '4', label: { tw: '8.7.x 合併節點', cn: '8.7.x 合并节点' } },
+        { num: '6', label: { tw: '定製功能模組', cn: '定制功能模块' } },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.7-dsj.1 為鼎盛佳客戶專屬發版包，對齊主線 AI-Platform-v1.1.10 基線。當時對外說明的核心目標是完成繁體中文全平台適配，並同步合併 8.7.x 主線穩定修正。',
+        cn: '本次 AI-Platform-v1.1.7-dsj.1 为鼎盛佳客户专属发版包，对齐主线 AI-Platform-v1.1.10 基线。当时对外说明的核心目标是完成繁体中文全平台适配，并同步合并 8.7.x 主线稳定修正。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 繁體中文全量補齊與翻譯稽核',
+            cn: '01 · 繁体中文全量补齐与翻译稽核',
+          },
+          tags: ['LOCALE', 'zh-TW', 'CUSTOM'],
+          items: [
+            {
+              tw: '補齊 Admin / Portal / Mobile / 表單 / 頁面元件 / 計算規則等多模組繁體 zh-TW 詞條。',
+              cn: '补齐 Admin / Portal / Mobile / 表单 / 页面组件 / 计算规则等多模块繁体 zh-TW 词条。',
+            },
+            {
+              tw: '完成 AI Platform 1.1.0 翻譯檢查四輪修正，並對二開語言包進行翻譯稽核。',
+              cn: '完成 AI Platform 1.1.0 翻译检查四轮修正，并对二开语言包进行翻译稽核。',
+            },
+            {
+              tw: '修正視圖設計「資料限定範圍」繁體翻譯，補全 zh-CN / en-US / zh-TW 三語預設語言差異。',
+              cn: '修正视图设计“数据限定范围”繁体翻译，补全 zh-CN / en-US / zh-TW 三语默认语言差异。',
+            },
+            {
+              tw: '修正繁體模式下仍顯示簡體中文，以及子表刪除按鈕顯示英文等問題。',
+              cn: '修正繁体模式下仍显示简体中文，以及子表删除按钮显示英文等问题。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · 國際化圖片資源完善',
+            cn: '02 · 国际化图片资源完善',
+          },
+          tags: ['I18N-IMAGE', 'zh-TW'],
+          items: [
+            {
+              tw: '完善 Admin / Portal / Mobile 三端國際化引導圖片資源。',
+              cn: '完善 Admin / Portal / Mobile 三端国际化引导图片资源。',
+            },
+            {
+              tw: '優化切換語言後的圖片渲染邏輯，補充繁體版本圖片並移除已廢棄的 new-user-guide 元件圖片。',
+              cn: '优化切换语言后的图片渲染逻辑，补充繁体版本图片并移除已废弃的 new-user-guide 组件图片。',
+            },
+            {
+              tw: '對缺失的繁體/英文圖片暫以中文版本圖片替代，確保介面完整性。',
+              cn: '对缺失的繁体/英文图片暂以中文版本图片替代，确保界面完整性。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · 列印模組繁體接入',
+            cn: '03 · 打印模块繁体接入',
+          },
+          tags: ['PRINT', 'zh-TW'],
+          items: [
+            {
+              tw: '列印模組接入繁體中文國際化，支援列印預覽、列印設定等場景的多語系顯示。',
+              cn: '打印模块接入繁体中文国际化，支持打印预览、打印设置等场景的多语系显示。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · extension-dsj 多語系架構',
+            cn: '04 · extension-dsj 多语系架构',
+          },
+          tags: ['I18N', 'REFACTOR'],
+          items: [
+            {
+              tw: '建立 extension-dsj 的 admin / portal / mobile 公共國際化目錄結構。',
+              cn: '建立 extension-dsj 的 admin / portal / mobile 公共国际化目录结构。',
+            },
+            {
+              tw: '新增 zh-CN / en-US / zh-TW 三語入口，支援定製詞條獨立維護。',
+              cn: '新增 zh-CN / en-US / zh-TW 三语入口，支持定制词条独立维护。',
+            },
+            {
+              tw: '更新 cloudpivot-locale 三端 index 合併邏輯，執行時自動融合 extension-dsj 資源。',
+              cn: '更新 cloudpivot-locale 三端 index 合并逻辑，运行时自动融合 extension-dsj 资源。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '05 · 連結位址統一設定中心',
+            cn: '05 · 链接地址统一配置中心',
+          },
+          tags: ['FEATURE', 'CONFIG'],
+          items: [
+            {
+              tw: '系統「整合設定」新增連結位址設定，統一管理 11 類說明/指引連結。',
+              cn: '系统“集成设置”新增链接地址配置，统一管理 11 类帮助/指引链接。',
+            },
+            {
+              tw: '核心實作下沉至 extension-dsj，主工程改為引入呼叫。',
+              cn: '核心实现下沉至 extension-dsj，主工程改为引入调用。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '06 · 行動端打包錯誤修正 TS2345',
+            cn: '06 · 移动端打包错误修正 TS2345',
+          },
+          tags: ['FIX', 'MOBILE'],
+          items: [
+            {
+              tw: '修正 task-hall 場景中 <code>ConditionGroupParser</code> 參數類型不相容問題，解除行動端打包阻塞。',
+              cn: '修正 task-hall 场景中 <code>ConditionGroupParser</code> 参数类型不兼容问题，解除移动端打包阻塞。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: 'frontend-v.feature-8.7.x-dsj_20260603194417.zip',
+          detail: {
+            tw: '包內 frontend/package.json 確認版本為 AI-Platform-v1.1.7-dsj.1。',
+            cn: '包内 frontend/package.json 确认版本为 AI-Platform-v1.1.7-dsj.1。',
+          },
+        },
+        {
+          source: 'dsj-changelogs/index.html',
+          detail: {
+            tw: '舊流水線頁面提供時間線、功能清單與提交表，轉寫為本版本原始口徑。',
+            cn: '旧流水线页面提供时间线、功能清单与提交表，转写为本版本原始口径。',
+          },
+        },
+        {
+          source: '5713a2513ce / 91187cbce13 / 3c849d677d1',
+          detail: {
+            tw: '合併 8.7.x 最新程式碼、同步版本號並發版。',
+            cn: '合并 8.7.x 最新代码、同步版本号并发版。',
+          },
+        },
+        {
+          source: '82ccd61379f..b70c0ba285e / e1b5c54fe58',
+          detail: {
+            tw: '繁體翻譯稽核、三語差異補全與列印模組繁體接入。',
+            cn: '繁体翻译稽核、三语差异补全与打印模块繁体接入。',
+          },
+        },
+      ],
+    },
+    {
+      id: 'ai-platform-v1-1-5-dsj',
+      version: 'AI-Platform-v1.1.5-dsj',
+      date: { tw: '2026-05-18 發版包', cn: '2026-05-18 发版包' },
+      badge: { tw: '早期正式版本', cn: '早期正式版本' },
+      meta: {
+        tw: '包版本由 frontend-v.feature-8.7.x-dsj_20260518115325.zip 中 frontend/package.json 確認；發版說明來源為 3c987096fb3:docs/CHANGELOG.html。',
+        cn: '包版本由 frontend-v.feature-8.7.x-dsj_20260518115325.zip 中 frontend/package.json 确认；发版说明来源为 3c987096fb3:docs/CHANGELOG.html。',
+      },
+      metrics: [
+        { num: '4', label: { tw: '定製功能', cn: '定制功能' } },
+        {
+          num: '34',
+          label: { tw: '8.7.x 合併後變更檔案', cn: '8.7.x 合并后变更文件' },
+        },
+        {
+          num: '23',
+          label: { tw: '核心業務改動檔案', cn: '核心业务改动文件' },
+        },
+        { num: '1', label: { tw: '定製套件', cn: '定制包' } },
+      ],
+      summary: {
+        tw: '本版本為 AI-Platform-v1.1.5-dsj 的早期正式對外發版包，原始說明聚焦 feature-8.7.x-dsj 分支定製改動，排除 8.7.x 合併基線，主要交付繁體中文全量補齊、extension-dsj 國際化架構、連結設定中心與行動端打包修正。',
+        cn: '本版本为 AI-Platform-v1.1.5-dsj 的早期正式对外发版包，原始说明聚焦 feature-8.7.x-dsj 分支定制改动，排除 8.7.x 合并基线，主要交付繁体中文全量补齐、extension-dsj 国际化架构、链接配置中心与移动端打包修正。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 繁體中文全量補齊',
+            cn: '01 · 繁体中文全量补齐',
+          },
+          tags: ['LOCALE', 'FEATURE'],
+          items: [
+            {
+              tw: '補齊 Admin / Portal / Mobile / 表單 / 頁面元件等多模組繁體詞條。',
+              cn: '补齐 Admin / Portal / Mobile / 表单 / 页面组件等多模块繁体词条。',
+            },
+            {
+              tw: '修復繁體缺失和術語錯誤，統一關鍵業務詞彙表達。',
+              cn: '修复繁体缺失和术语错误，统一关键业务词汇表达。',
+            },
+            {
+              tw: '補充計算規則相關繁體適配，減少公式場景多語言偏差。',
+              cn: '补充计算规则相关繁体适配，减少公式场景多语言偏差。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · extension-dsj 國際化接入架構',
+            cn: '02 · extension-dsj 国际化接入架构',
+          },
+          tags: ['I18N', 'REFACTOR'],
+          items: [
+            {
+              tw: '建立 extension-dsj 的 admin / portal / mobile 公共國際化目錄結構。',
+              cn: '建立 extension-dsj 的 admin / portal / mobile 公共国际化目录结构。',
+            },
+            {
+              tw: '新增 zh-CN / en-US / zh-TW 三語入口，支援定製詞條獨立維護。',
+              cn: '新增 zh-CN / en-US / zh-TW 三语入口，支持定制词条独立维护。',
+            },
+            {
+              tw: '更新 cloudpivot-locale 三端 index 合併邏輯，執行時自動融合 extension-dsj 資源。',
+              cn: '更新 cloudpivot-locale 三端 index 合并逻辑，运行时自动融合 extension-dsj 资源。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · 連結位址統一設定中心',
+            cn: '03 · 链接地址统一配置中心',
+          },
+          tags: ['FEATURE', 'CONFIG'],
+          items: [
+            {
+              tw: '在系統「整合設定」新增連結位址設定，統一管理 11 類說明/指引連結。',
+              cn: '在系统“集成设置”新增链接地址配置，统一管理 11 类帮助/指引链接。',
+            },
+            {
+              tw: '核心實作下沉到 extension-dsj，主工程改為引入呼叫，避免分散寫死。',
+              cn: '核心实现下沉到 extension-dsj，主工程改为引入调用，避免分散硬编码。',
+            },
+            {
+              tw: '支援客服、手冊、影片、開發者文件、更新日誌、業務規則、整合說明等場景統一讀取。',
+              cn: '支持客服、手册、视频、开发者文档、更新日志、业务规则、集成帮助等场景统一读取。',
+            },
+            {
+              tw: '目前先落地 localStorage，後續可切換介面持久化到資料庫。',
+              cn: '当前先落地 localStorage，后续可切换接口持久化到数据库。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · 行動端打包錯誤修復 TS2345',
+            cn: '04 · 移动端打包错误修复 TS2345',
+          },
+          tags: ['FIX', 'MOBILE'],
+          items: [
+            {
+              tw: '修復 task-hall 場景中 <code>ConditionGroupParser</code> 參數類型不相容問題。',
+              cn: '修复 task-hall 场景中 <code>ConditionGroupParser</code> 参数类型不兼容问题。',
+            },
+            {
+              tw: '對相關呼叫添加斷言，解除行動端打包阻塞。',
+              cn: '对相关调用添加断言，解除移动端打包阻塞。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: 'frontend-v.feature-8.7.x-dsj_20260518115325.zip',
+          detail: {
+            tw: '包內 frontend/package.json 確認版本為 AI-Platform-v1.1.5-dsj。',
+            cn: '包内 frontend/package.json 确认版本为 AI-Platform-v1.1.5-dsj。',
+          },
+        },
+        {
+          source: '3c987096fb3:docs/CHANGELOG.html',
+          detail: {
+            tw: '提煉 AI-Platform-v1.1.5-dsj 原始對外發版說明內容。',
+            cn: '提炼 AI-Platform-v1.1.5-dsj 原始对外发版说明内容。',
+          },
+        },
+        {
+          source: '6f2cc4cac7b / 2cdcdd8514f / 77f29d953d7 / 8f53483cc5c',
+          detail: {
+            tw: '國際化架構、連結位址設定與行動端打包修復的核心提交。',
+            cn: '国际化架构、链接地址配置与移动端打包修复的核心提交。',
+          },
+        },
+      ],
+    },
+  ];
+  function t(value) {
+    if (value && typeof value === 'object') {
+      return value[currentLang] || value.tw || value.cn || '';
+    }
+    return value || '';
+  }
+  function setStaticCopy() {
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      el.innerHTML = t(copy[el.getAttribute('data-i18n')]);
+    });
+    document
+            .getElementById('btn-tw')
+            .classList.toggle('active', currentLang === 'tw');
+    document
+            .getElementById('btn-cn')
+            .classList.toggle('active', currentLang === 'cn');
+    document.documentElement.lang =
+            currentLang === 'tw' ? 'zh-TW' : 'zh-CN';
+  }
+  function renderNav() {
+    var nav = document.getElementById('version-nav');
+    nav.innerHTML = releases
+            .map(function (r) {
+              return (
+                      '<a class="nav-link" href="#' +
+                      r.id +
+                      '" data-version-id="' +
+                      r.id +
+                      '"><span class="version">' +
+                      r.version +
+                      '</span><span class="date">' +
+                      t(r.date) +
+                      '</span></a>'
+              );
+            })
+            .join('');
+  }
+  function renderMetrics(metrics) {
+    return metrics
+            .map(function (m) {
+              return (
+                      '<div class="metric"><span class="num">' +
+                      m.num +
+                      '</span><span class="label">' +
+                      t(m.label) +
+                      '</span></div>'
+              );
+            })
+            .join('');
+  }
+  function renderTags(tags, index) {
+    return tags
+            .map(function (tag) {
+              var cls =
+                      index % 3 === 0 ? ' green' : index % 3 === 1 ? ' amber' : '';
+              return '<span class="tag' + cls + '">' + tag + '</span>';
+            })
+            .join('');
+  }
+  function renderSections(sections) {
+    return sections
+            .map(function (s, index) {
+              var items = s.items
+                      .map(function (item) {
+                        return '<li>' + t(item) + '</li>';
+                      })
+                      .join('');
+              return (
+                      '<section class="card"><h3>' +
+                      t(s.title) +
+                      '</h3><div class="tags">' +
+                      renderTags(s.tags, index) +
+                      '</div><ul>' +
+                      items +
+                      '</ul></section>'
+              );
+            })
+            .join('');
+  }
+  function renderSources(sources) {
+    return (
+            '<section class="source-block"><h3>' +
+            t(copy.sourceTitle) +
+            '</h3><div class="source-table-wrap"><table class="source-table"><thead><tr><th>' +
+            t(copy.sourceCol) +
+            '</th><th>' +
+            t(copy.detailCol) +
+            '</th></tr></thead><tbody>' +
+            sources
+                    .map(function (row) {
+                      return (
+                              '<tr><td>' +
+                              row.source +
+                              '</td><td>' +
+                              t(row.detail) +
+                              '</td></tr>'
+                      );
+                    })
+                    .join('') +
+            '</tbody></table></div></section>'
+    );
+  }
+  function renderContent() {
+    var content = document.getElementById('release-content');
+    content.innerHTML = releases
+            .map(function (r) {
+              return (
+                      '<article id="' +
+                      r.id +
+                      '" class="release-panel"><header class="release-head"><div class="release-title-row"><h2 class="release-title">' +
+                      r.version +
+                      '</h2><span class="badge">' +
+                      t(r.badge) +
+                      '</span></div><p class="release-meta">' +
+                      t(r.date) +
+                      ' · ' +
+                      t(r.meta) +
+                      '</p><div class="metrics">' +
+                      renderMetrics(r.metrics) +
+                      '</div></header><div class="release-body"><p class="summary">' +
+                      t(r.summary) +
+                      '</p><div class="cards">' +
+                      renderSections(r.sections) +
+                      '</div>' +
+                      renderSources(r.sources) +
+                      '</div></article>'
+              );
+            })
+            .join('');
+  }
+  function setActiveVersion(id) {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.classList.toggle(
+              'active',
+              link.getAttribute('data-version-id') === id,
+      );
+    });
+  }
+  function bindNav() {
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setActiveVersion(link.getAttribute('data-version-id'));
+      });
+    });
+  }
+  function bindLanguageSwitch() {
+    document
+            .querySelectorAll('.lang-switch button')
+            .forEach(function (button) {
+              button.addEventListener('click', function () {
+                currentLang = button.getAttribute('data-lang');
+                localStorage.setItem('dsj-changelog-lang', currentLang);
+                renderPage(false);
+              });
+            });
+  }
+  function observeSections() {
+    if (!('IntersectionObserver' in window)) {
+      setActiveVersion(
+              location.hash ? location.hash.slice(1) : releases[0].id,
+      );
+      return;
+    }
+    var observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  setActiveVersion(entry.target.id);
+                }
+              });
+            },
+            { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 },
+    );
+    releases.forEach(function (r) {
+      var el = document.getElementById(r.id);
+      if (el) {
+        observer.observe(el);
       }
-      (function () {
-        var saved = localStorage.getItem("dsj-changelog-lang") || "tw";
-        switchLang(saved);
-      })();
-    </script>
-  </body>
+    });
+  }
+  function renderPage(shouldBindLanguage) {
+    setStaticCopy();
+    renderNav();
+    renderContent();
+    bindNav();
+    if (shouldBindLanguage) {
+      bindLanguageSwitch();
+    }
+    setActiveVersion(
+            location.hash ? location.hash.slice(1) : releases[0].id,
+    );
+    observeSections();
+  }
+  window.addEventListener('hashchange', function () {
+    setActiveVersion(
+            location.hash ? location.hash.slice(1) : releases[0].id,
+    );
+  });
+  renderPage(true);
+</script>
+</body>
 </html>
