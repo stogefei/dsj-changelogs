@@ -423,8 +423,8 @@
       cn: '云枢企业 AI 平台 · DSJ 定制版版本升级说明',
     },
     subline: {
-      tw: '依版本倒序整理四次已對外發佈的 DSJ 發版說明，可直接作為外發流水線 index.html 使用。',
-      cn: '按版本倒序整理四次已对外发布的 DSJ 发版说明，可直接作为外发流水线 index.html 使用。',
+      tw: '依版本倒序整理五次已對外發佈的 DSJ 發版說明，可直接作為外發流水線 index.html 使用。',
+      cn: '按版本倒序整理五次已对外发布的 DSJ 发版说明，可直接作为外发流水线 index.html 使用。',
     },
     menuTitle: { tw: '版本選單', cn: '版本菜单' },
     sourceTitle: { tw: '提交與來源依據', cn: '提交与来源依据' },
@@ -437,10 +437,104 @@
   };
   var releases = [
     {
+      id: 'ai-platform-v1-1-13-dsj',
+      version: 'AI-Platform-v1.1.13-dsj',
+      date: { tw: '2026-07-10 發版', cn: '2026-07-10 发版' },
+      badge: { tw: '目前版本', cn: '当前版本' },
+      meta: {
+        tw: '版本升級範圍：AI-Platform-v1.1.11-dsj 至 AI-Platform-v1.1.13-dsj。包內版本已同步至 AI-Platform-v1.1.13-dsj.1。',
+        cn: '版本升级范围：AI-Platform-v1.1.11-dsj 至 AI-Platform-v1.1.13-dsj。包内版本已同步至 AI-Platform-v1.1.13-dsj.1。',
+      },
+      metrics: [
+        { num: '2', label: { tw: '更新內容', cn: '更新内容' } },
+        { num: '0', label: { tw: '新增功能', cn: '新增功能' } },
+        { num: '8.7.x', label: { tw: '原廠分支同步', cn: '原厂分支同步' } },
+        {
+          num: '6.3.1-alpha.56',
+          label: { tw: '報表版本', cn: '报表版本' },
+        },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.13-dsj 未新增 DSJ 定製功能，主要完成 8.7.x 原廠分支最新修正同步，並將報表相關依賴升級至 6.3.1-alpha.56，以保持 DSJ 交付包與主線版本能力一致。',
+        cn: '本次 AI-Platform-v1.1.13-dsj 未新增 DSJ 定制功能，主要完成 8.7.x 原厂分支最新修正同步，并将报表相关依赖升级至 6.3.1-alpha.56，以保持 DSJ 交付包与主线版本能力一致。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 同步 8.7.x 原廠分支最新修正',
+            cn: '01 · 同步 8.7.x 原厂分支最新修正',
+          },
+          tags: ['8.7.x', 'MERGE'],
+          items: [
+            {
+              tw: '合併 8.7.x 原廠分支最新程式碼，吸收主線缺陷修復、穩定性調整與版本基線更新。',
+              cn: '合并 8.7.x 原厂分支最新代码，吸收主线缺陷修复、稳定性调整与版本基线更新。',
+            },
+            {
+              tw: '本次同步未新增 DSJ 定製業務入口或新的使用者可見功能，重點是保持交付包與原廠分支一致。',
+              cn: '本次同步未新增 DSJ 定制业务入口或新的用户可见功能，重点是保持交付包与原厂分支一致。',
+            },
+            {
+              tw: '前端主工程及 DSJ 定製套件版本隨發版對齊至 1.1.13-dsj 交付口徑。',
+              cn: '前端主工程及 DSJ 定制包版本随发版对齐至 1.1.13-dsj 交付口径。',
+            },
+          ],
+        },
+        {
+          title: { tw: '02 · 報表版本升級', cn: '02 · 报表版本升级' },
+          tags: ['REPORT', 'DEPENDENCY'],
+          items: [
+            {
+              tw: '報表依賴 <code>@h3/report</code> 與 <code>@h3/report-mobile</code> 升級至 <code>6.3.1-alpha.56</code>。',
+              cn: '报表依赖 <code>@h3/report</code> 与 <code>@h3/report-mobile</code> 升级至 <code>6.3.1-alpha.56</code>。',
+            },
+            {
+              tw: '列印底座維持 <code>2.8.89</code>，本次主要同步報表元件版本。',
+              cn: '打印底座维持 <code>2.8.89</code>，本次主要同步报表组件版本。',
+            },
+            {
+              tw: '升級後管理後台、門戶與行動端報表展示能力與 8.7.x 主線保持一致。',
+              cn: '升级后管理后台、门户与移动端报表展示能力与 8.7.x 主线保持一致。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: 'fd2d28d7eac',
+          detail: {
+            tw: '鼎盛佳合併最新版本並發出 AI-Platform-v1.1.13-dsj.1 交付包。',
+            cn: '鼎盛佳合并最新版本并发出 AI-Platform-v1.1.13-dsj.1 交付包。',
+          },
+        },
+        {
+          source: 'e1ac0fe2724',
+          detail: {
+            tw: 'Merge branch 8.7.x into feature-8.7.x-dsj，同步原廠分支最新修改。',
+            cn: 'Merge branch 8.7.x into feature-8.7.x-dsj，同步原厂分支最新修改。',
+          },
+        },
+        {
+          source: '544568aaba6',
+          detail: {
+            tw: '報表版本更新至 6.3.1-alpha.56。',
+            cn: '报表版本更新至 6.3.1-alpha.56。',
+          },
+        },
+        {
+          source: 'package.json',
+          detail: {
+            tw: '確認主工程版本為 AI-Platform-v1.1.13-dsj.1，報表依賴為 6.3.1-alpha.56。',
+            cn: '确认主工程版本为 AI-Platform-v1.1.13-dsj.1，报表依赖为 6.3.1-alpha.56。',
+          },
+        },
+      ],
+    },
+    {
       id: 'ai-platform-v1-1-11-dsj-2',
       version: 'AI-Platform-v1.1.11-dsj',
       date: { tw: '2026-06-29 發版', cn: '2026-06-29 发版' },
-      badge: { tw: '目前版本', cn: '当前版本' },
+      badge: { tw: '上一版本', cn: '上一版本' },
       meta: {
         tw: '版本升級範圍：AI-Platform-v1.1.9-dsj 至 AI-Platform-v1.1.11-dsj。提交定位：ad968485f27 至 8c638de0972。',
         cn: '版本升级范围：AI-Platform-v1.1.9-dsj 至 AI-Platform-v1.1.11-dsj。提交定位：ad968485f27 至 8c638de0972。',
