@@ -437,10 +437,159 @@
   };
   var releases = [
     {
+      id: 'ai-platform-v1-1-15-dsj-3',
+      version: 'AI-Platform-v1.1.15-dsj.3',
+      date: { tw: '2026-07-30 發版', cn: '2026-07-30 发版' },
+      badge: { tw: '目前版本', cn: '当前版本' },
+      meta: {
+        tw: '版本升級範圍：1d6850b5cad 至 631ee954151。對外發版版本為 AI-Platform-v1.1.15-dsj.3，共納入 4 筆可達提交。',
+        cn: '版本升级范围：1d6850b5cad 至 631ee954151。对外发版版本为 AI-Platform-v1.1.15-dsj.3，共纳入 4 笔可达提交。',
+      },
+      metrics: [
+        { num: '4', label: { tw: '更新內容', cn: '更新内容' } },
+        { num: '2', label: { tw: '管理設定調整', cn: '管理配置调整' } },
+        { num: '4', label: { tw: '納入提交', cn: '纳入提交' } },
+        { num: '8.7.x', label: { tw: '來源分支', cn: '来源分支' } },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.15-dsj.3 完成交付包與管理端核心套件版本對齊，調整工作日曆的預設日曆刪除入口，收斂組織維護類型的整合選項，並統一初始化資料項排序。相關設定調整以管理端介面入口與資料呈現一致性治理為主，既有後端權限、業務校驗及第三方整合實作仍依目前部署版本為準。',
+        cn: '本次 AI-Platform-v1.1.15-dsj.3 完成交付包与管理端核心组件版本对齐，调整工作日历的默认日历删除入口，收敛组织维护类型的集成选项，并统一初始化数据项排序。相关配置调整以管理端界面入口与数据呈现一致性治理为主，既有后端权限、业务校验及第三方集成实现仍以当前部署版本为准。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 交付包與管理端核心套件對齊',
+            cn: '01 · 交付包与管理端核心组件对齐',
+          },
+          tags: ['PACKAGE', 'ADMIN', 'DSJ'],
+          items: [
+            {
+              tw: '前端主工程對外發版版本升級至 <code>AI-Platform-v1.1.15-dsj.3</code>。',
+              cn: '前端主工程对外发版版本升级至 <code>AI-Platform-v1.1.15-dsj.3</code>。',
+            },
+            {
+              tw: '管理端核心套件 <code>cloudpivot-admin-core</code> 同步升級至 <code>1.1.15-ai-platform-dsj.3</code>；<code>extension-dsj</code> 套件版本同步至 <code>1.1.13-ai-platform-dsj.2</code>。',
+              cn: '管理端核心组件 <code>cloudpivot-admin-core</code> 同步升级至 <code>1.1.15-ai-platform-dsj.3</code>；<code>extension-dsj</code> 组件版本同步至 <code>1.1.13-ai-platform-dsj.2</code>。',
+            },
+            {
+              tw: '本次說明依據 <code>1d6850b5cad..631ee954151</code> 提交範圍整理，共納入 4 筆可達提交；版本調整不等同於新增功能模組。',
+              cn: '本次说明依据 <code>1d6850b5cad..631ee954151</code> 提交范围整理，共纳入 4 笔可达提交；版本调整不等同于新增功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · 工作日曆預設日曆維護優化',
+            cn: '02 · 工作日历默认日历维护优化',
+          },
+          tags: ['CALENDAR', 'ADMIN', 'CONFIG'],
+          items: [
+            {
+              tw: '管理端工作日曆中的預設日曆現在會展示「刪除」操作入口，不再由前端條件隱藏。',
+              cn: '管理端工作日历中的默认日历现在会展示“删除”操作入口，不再由前端条件隐藏。',
+            },
+            {
+              tw: '刪除操作仍沿用既有確認流程與日曆刪除介面；實際能否刪除仍受既有權限及業務校驗規則約束。',
+              cn: '删除操作仍沿用既有确认流程与日历删除接口；实际能否删除仍受既有权限及业务校验规则约束。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · 組織維護類型整合選項收斂',
+            cn: '03 · 组织维护类型集成选项收敛',
+          },
+          tags: ['ORG', 'CONFIG', 'DSJ'],
+          items: [
+            {
+              tw: '組織新增與維護畫面的維護類型選項不再展示釘釘、飛書與企業微信整合，僅保留自維護與自訂組織路徑。',
+              cn: '组织新增与维护页面的维护类型选项不再展示钉钉、飞书与企业微信集成，仅保留自维护与自定义组织路径。',
+            },
+            {
+              tw: '新增組織時預設採用「自維護」類型，降低進入未納入本次交付範圍整合設定的機會。',
+              cn: '新增组织时默认采用“自维护”类型，降低进入未纳入本次交付范围集成配置的机会。',
+            },
+            {
+              tw: '本項為管理端選項入口治理，不代表移除既有組織資料、第三方整合實作或所有相關後端能力。',
+              cn: '本项为管理端选项入口治理，不代表移除既有组织数据、第三方集成实现或所有相关后端能力。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · 初始化資料項排序統一',
+            cn: '04 · 初始化数据项排序统一',
+          },
+          tags: ['INIT', 'DATA', 'ORDER'],
+          items: [
+            {
+              tw: '統一初始化資料項的排序規則，讓相關設定與呈現場景以一致順序顯示資料項目。',
+              cn: '统一初始化数据项的排序规则，让相关配置与呈现场景以一致顺序显示数据项目。',
+            },
+            {
+              tw: '本項著重於資料項排序的一致性，降低不同場景出現排序結果不一致的情況。',
+              cn: '本项着重于数据项排序的一致性，降低不同场景出现排序结果不一致的情况。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: '1d6850b5cad..631ee954151',
+          detail: {
+            tw: '本次 <code>AI-Platform-v1.1.15-dsj.3</code> 發版說明的提交比對範圍，共 4 筆可達提交。',
+            cn: '本次 <code>AI-Platform-v1.1.15-dsj.3</code> 发版说明的提交比对范围，共 4 笔可达提交。',
+          },
+        },
+        {
+          source: '發版內容補充',
+          detail: {
+            tw: '補充初始化資料項排序統一功能的對外說明。',
+            cn: '补充初始化数据项排序统一功能的对外说明。',
+          },
+        },
+        {
+          source: '5cefad5c89e',
+          detail: {
+            tw: '<code>extension-dsj</code> 套件由 <code>1.1.13-ai-platform-dsj.1</code> 升級至 <code>1.1.13-ai-platform-dsj.2</code>。',
+            cn: '<code>extension-dsj</code> 组件由 <code>1.1.13-ai-platform-dsj.1</code> 升级至 <code>1.1.13-ai-platform-dsj.2</code>。',
+          },
+        },
+        {
+          source: 'c7d8c7ea498',
+          detail: {
+            tw: '移除預設工作日曆刪除操作的前端隱藏條件。',
+            cn: '移除默认工作日历删除操作的前端隐藏条件。',
+          },
+        },
+        {
+          source: '46bf1f3354d',
+          detail: {
+            tw: '組織維護類型選項收斂，新增組織預設為自維護。',
+            cn: '组织维护类型选项收敛，新增组织默认为自维护。',
+          },
+        },
+        {
+          source: '631ee954151',
+          detail: {
+            tw: '前端主工程與 <code>cloudpivot-admin-core</code> 升級至 DSJ <code>.3</code> 版本。',
+            cn: '前端主工程与 <code>cloudpivot-admin-core</code> 升级至 DSJ <code>.3</code> 版本。',
+          },
+        },
+        {
+          source: 'package.json @ 631ee954151',
+          detail: {
+            tw: '確認前端主工程為 <code>AI-Platform-v1.1.15-dsj.3</code>、<code>cloudpivot-admin-core</code> 為 <code>1.1.15-ai-platform-dsj.3</code>、<code>extension-dsj</code> 為 <code>1.1.13-ai-platform-dsj.2</code>。',
+            cn: '确认前端主工程为 <code>AI-Platform-v1.1.15-dsj.3</code>、<code>cloudpivot-admin-core</code> 为 <code>1.1.15-ai-platform-dsj.3</code>、<code>extension-dsj</code> 为 <code>1.1.13-ai-platform-dsj.2</code>。',
+          },
+        },
+      ],
+    },
+    {
       id: 'ai-platform-v1-1-15-dsj',
       version: 'AI-Platform-v1.1.15-dsj',
       date: { tw: '2026-07-28 發版', cn: '2026-07-28 发版' },
-      badge: { tw: '目前版本', cn: '当前版本' },
+      badge: { tw: '上一版本', cn: '上一版本' },
       meta: {
         tw: '版本升級範圍：532b0bd8933 至 1d6850b5cad。對外發版口徑為 AI-Platform-v1.1.15-dsj；前端交付包版本為 AI-Platform-v1.1.15-dsj.2。',
         cn: '版本升级范围：532b0bd8933 至 1d6850b5cad。对外发版口径为 AI-Platform-v1.1.15-dsj；前端交付包版本为 AI-Platform-v1.1.15-dsj.2。',
