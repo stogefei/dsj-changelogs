@@ -437,10 +437,170 @@
   };
   var releases = [
     {
+      id: 'ai-platform-v1-1-18-dsj-1',
+      version: 'AI-Platform-v1.1.18-dsj.1',
+      date: { tw: '2026-08-14 發版', cn: '2026-08-14 发版' },
+      badge: { tw: '目前版本', cn: '当前版本' },
+      meta: {
+        tw: '版本升級範圍：631ee954151 至 82e022d34aa。對外發版版本為 AI-Platform-v1.1.18-dsj.1，共納入 129 筆可達提交（90 筆非合併；DSJ 首父鏈 8 筆）。',
+        cn: '版本升级范围：631ee954151 至 82e022d34aa。对外发版版本为 AI-Platform-v1.1.18-dsj.1，共纳入 129 笔可达提交（90 笔非合并；DSJ 首父链 8 笔）。',
+      },
+      metrics: [
+        { num: '4', label: { tw: '更新內容', cn: '更新内容' } },
+        { num: '129', label: { tw: '納入提交', cn: '纳入提交' } },
+        { num: '90', label: { tw: '非合併提交', cn: '非合并提交' } },
+        { num: '8', label: { tw: 'DSJ 首父鏈提交', cn: 'DSJ 首父链提交' } },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.18-dsj.1 完成交付包與核心依賴版本對齊，更新客戶識別圖片及交付資源，並升級報表與列印元件以處理繁體圖片相容；同時同步 8.7.x 原廠基線的安全加固與穩定性修復。原廠基線同步以既有能力修復為主，並非全部均為 DSJ 新增業務功能。',
+        cn: '本次 AI-Platform-v1.1.18-dsj.1 完成交付包与核心依赖版本对齐，更新客户标识图片及交付资源，并升级报表与打印组件以处理繁体图片兼容；同时同步 8.7.x 原厂基线的安全加固与稳定性修复。原厂基线同步以既有能力修复为主，并非全部均为 DSJ 新增业务功能。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 交付包與核心依賴版本對齊',
+            cn: '01 · 交付包与核心依赖版本对齐',
+          },
+          tags: ['PACKAGE', 'DEPENDENCY', 'DSJ'],
+          items: [
+            {
+              tw: '前端主工程對外發版版本升級至 <code>AI-Platform-v1.1.18-dsj.1</code>，管理端核心套件 <code>cloudpivot-admin-core</code> 對齊至 <code>1.1.18-ai-platform-dsj.1</code>。',
+              cn: '前端主工程对外发版版本升级至 <code>AI-Platform-v1.1.18-dsj.1</code>，管理端核心组件 <code>cloudpivot-admin-core</code> 对齐至 <code>1.1.18-ai-platform-dsj.1</code>。',
+            },
+            {
+              tw: '<code>extension-dsj</code> 維持 <code>1.1.13-ai-platform-dsj.2</code>；報表套件 <code>@h3/report</code> 與 <code>@h3/report-mobile</code> 為 <code>6.3.1-alpha.64</code>，列印套件同步至 <code>2.8.97</code>。',
+              cn: '<code>extension-dsj</code> 维持 <code>1.1.13-ai-platform-dsj.2</code>；报表组件 <code>@h3/report</code> 与 <code>@h3/report-mobile</code> 为 <code>6.3.1-alpha.64</code>，打印组件同步至 <code>2.8.97</code>。',
+            },
+            {
+              tw: '編輯器 <code>TinyMCE</code> 升級至 <code>7.9.3</code>，隨交付包完成相依套件治理；版本對齊不等同於新增業務功能模組。',
+              cn: '编辑器 <code>TinyMCE</code> 升级至 <code>7.9.3</code>，随交付包完成依赖组件治理；版本对齐不等同于新增业务功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · 客戶識別圖片更新與資源清理',
+            cn: '02 · 客户标识图片更新与资源清理',
+          },
+          tags: ['BRAND', 'ASSET', 'DSJ'],
+          items: [
+            {
+              tw: '依據客戶提供的素材更新受影響端側的品牌與 Logo 圖片資源，維持交付介面的識別一致性。',
+              cn: '依据客户提供的素材更新受影响端侧的品牌与 Logo 图片资源，保持交付界面的标识一致性。',
+            },
+            {
+              tw: '清理未使用但仍被掃描到的圖片資源，並調整相關引用與私有套件差異，降低交付包中遺留資源的維護成本。',
+              cn: '清理未使用但仍被扫描到的图片资源，并调整相关引用与私有组件差异，降低交付包中遗留资源的维护成本。',
+            },
+            {
+              tw: '本項為客戶交付資源維護，不涉及新增業務功能模組。',
+              cn: '本项为客户交付资源维护，不涉及新增业务功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · 報表與列印依賴升級及繁體圖片相容',
+            cn: '03 · 报表与打印依赖升级及繁体图片兼容',
+          },
+          tags: ['REPORT', 'PRINT', 'zh-TW'],
+          items: [
+            {
+              tw: '報表及列印相關依賴升級至本次交付版本，並配合處理繁體中文圖片資源的相容情境。',
+              cn: '报表及打印相关依赖升级至本次交付版本，并配合处理繁体中文图片资源的兼容场景。',
+            },
+            {
+              tw: '此項著重於相依套件治理與既有報表、列印場景的相容性調整，不涉及新增報表設計器或列印功能模組。',
+              cn: '此项着重于依赖组件治理与既有报表、打印场景的兼容性调整，不涉及新增报表设计器或打印功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · 同步 8.7.x 原廠基線安全與穩定性修復',
+            cn: '04 · 同步 8.7.x 原厂基线安全与稳定性修复',
+          },
+          tags: ['8.7.x', 'MERGE', 'BUGFIX', 'SECURITY'],
+          items: [
+            {
+              tw: '同步跨視窗 <code>postMessage</code> 接收校驗、內容與列印輸出淨化，以及開發測試 Token 與網域設定清理等安全加固，降低既有使用場景的風險。',
+              cn: '同步跨窗口 <code>postMessage</code> 接收校验、内容与打印输出净化，以及开发测试 Token 与域名配置清理等安全加固，降低既有使用场景的风险。',
+            },
+            {
+              tw: '同步 OCR 請求 <code>pluginType</code> 傳遞，以及子表編輯、分頁與排序後批次操作、列表與關聯欄位、行動端輸入與地圖、流程及審批等既有場景修復。',
+              cn: '同步 OCR 请求 <code>pluginType</code> 传递，以及子表编辑、分页与排序后批量操作、列表与关联字段、移动端输入与地图、流程及审批等既有场景修复。',
+            },
+            {
+              tw: '本次合併 <code>d548dc5442f</code> 與 <code>ffac755770d</code> 對應的 8.7.x 基線；以上為代表性修復與穩定性改善，非逐項列出所有上游提交。',
+              cn: '本次合并 <code>d548dc5442f</code> 与 <code>ffac755770d</code> 对应的 8.7.x 基线；以上为代表性修复与稳定性改善，并非逐项列出所有上游提交。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: '631ee954151..82e022d34aa',
+          detail: {
+            tw: '本次 <code>AI-Platform-v1.1.18-dsj.1</code> 發版說明的提交比對範圍，共 129 筆可達提交、90 筆非合併提交及 8 筆 DSJ 首父鏈提交。',
+            cn: '本次 <code>AI-Platform-v1.1.18-dsj.1</code> 发版说明的提交比对范围，共 129 笔可达提交、90 笔非合并提交及 8 笔 DSJ 首父链提交。',
+          },
+        },
+        {
+          source: '82e022d34aa',
+          detail: {
+            tw: '<code>AI-Platform-v1.1.18-dsj.1</code> 的 DSJ 發版文件提交。',
+            cn: '<code>AI-Platform-v1.1.18-dsj.1</code> 的 DSJ 发版文档提交。',
+          },
+        },
+        {
+          source: 'package.json @ 82e022d34aa',
+          detail: {
+            tw: '確認主工程為 <code>AI-Platform-v1.1.18-dsj.1</code>、<code>cloudpivot-admin-core</code> 為 <code>1.1.18-ai-platform-dsj.1</code>、<code>extension-dsj</code> 維持 <code>1.1.13-ai-platform-dsj.2</code>；報表為 <code>6.3.1-alpha.64</code>、列印為 <code>2.8.97</code>、<code>TinyMCE</code> 為 <code>7.9.3</code>。',
+            cn: '确认主工程为 <code>AI-Platform-v1.1.18-dsj.1</code>、<code>cloudpivot-admin-core</code> 为 <code>1.1.18-ai-platform-dsj.1</code>、<code>extension-dsj</code> 维持 <code>1.1.13-ai-platform-dsj.2</code>；报表为 <code>6.3.1-alpha.64</code>、打印为 <code>2.8.97</code>、<code>TinyMCE</code> 为 <code>7.9.3</code>。',
+          },
+        },
+        {
+          source: '81c5c920e6b / 12b2467802c',
+          detail: {
+            tw: 'DSJ 版本與相依套件對齊，以及圖片替換產生差異所需的私有套件調整。',
+            cn: 'DSJ 版本与依赖组件对齐，以及图片替换产生差异所需的私有组件调整。',
+          },
+        },
+        {
+          source: '9f6357d571e / 21b9809f93a',
+          detail: {
+            tw: '依客戶素材替換圖片，並清理未使用但被掃描到的圖片資源。',
+            cn: '按客户素材替换图片，并清理未使用但被扫描到的图片资源。',
+          },
+        },
+        {
+          source: '0fae1bdc946',
+          detail: {
+            tw: '升級報表與列印套件，並處理繁體圖片相容調整。',
+            cn: '升级报表与打印组件，并处理繁体图片兼容调整。',
+          },
+        },
+        {
+          source: 'd548dc5442f / ffac755770d',
+          detail: {
+            tw: '兩次合併 8.7.x 原廠分支，納入安全加固、缺陷修復與穩定性調整。',
+            cn: '两次合并 8.7.x 原厂分支，纳入安全加固、缺陷修复与稳定性调整。',
+          },
+        },
+        {
+          source: '94a20377835 (AI-Platform-v1.1.18)',
+          detail: {
+            tw: '本次 DSJ 交付版本可達的原廠 <code>AI-Platform-v1.1.18</code> 基線標籤。',
+            cn: '本次 DSJ 交付版本可达的原厂 <code>AI-Platform-v1.1.18</code> 基线标签。',
+          },
+        },
+      ],
+    },
+    {
       id: 'ai-platform-v1-1-15-dsj-3',
       version: 'AI-Platform-v1.1.15-dsj.3',
       date: { tw: '2026-07-30 發版', cn: '2026-07-30 发版' },
-      badge: { tw: '目前版本', cn: '当前版本' },
+      badge: { tw: '上一版本', cn: '上一版本' },
       meta: {
         tw: '版本升級範圍：1d6850b5cad 至 631ee954151。對外發版版本為 AI-Platform-v1.1.15-dsj.3，共納入 4 筆可達提交。',
         cn: '版本升级范围：1d6850b5cad 至 631ee954151。对外发版版本为 AI-Platform-v1.1.15-dsj.3，共纳入 4 笔可达提交。',
