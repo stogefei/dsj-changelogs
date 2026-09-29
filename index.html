@@ -437,10 +437,187 @@
   };
   var releases = [
     {
+      id: 'ai-platform-v1-1-23-dsj',
+      version: 'AI-Platform-v1.1.23-dsj',
+      date: { tw: '2026-09-29 發版', cn: '2026-09-29 发布' },
+      badge: { tw: '目前版本', cn: '当前版本' },
+      meta: {
+        tw: '版本升級範圍：6ef7981ea8c 至 HEAD（921913369db）。對外發版版本為 AI-Platform-v1.1.23-dsj，根 package 版本為 AI-Platform-v1.1.23-dsj.1，共納入 17 筆可達提交（14 筆非合併提交）。',
+        cn: '版本升级范围：6ef7981ea8c 至 HEAD（921913369db）。对外发布版本为 AI-Platform-v1.1.23-dsj，根 package 版本为 AI-Platform-v1.1.23-dsj.1，共纳入 17 笔可达提交（14 笔非合并提交）。',
+      },
+      metrics: [
+        { num: '6', label: { tw: '更新主題', cn: '更新主题' } },
+        { num: '17', label: { tw: '可達提交', cn: '可达提交' } },
+        { num: '14', label: { tw: '非合併提交', cn: '非合并提交' } },
+        { num: '1.1.23', label: { tw: '發版基線', cn: '发布基线' } },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.23-dsj 為 9 月 24 日版本的增量發版：完成前端套件與報表／列印依賴對齊，補齊 KindEditor、行動端載入提示及列印型別相容修復，並保留 DSJ 組織整合入口治理；同時納入組織設定舊資料相容與電子簽章既有缺陷修復。',
+        cn: '本次 AI-Platform-v1.1.23-dsj 为 9 月 24 日版本的增量发布：完成前端组件与报表／打印依赖对齐，补齐 KindEditor、移动端加载提示及打印类型兼容修复，并保留 DSJ 组织集成入口治理；同时纳入组织配置旧数据兼容与电子签章既有缺陷修复。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 發版基線與依賴版本對齊',
+            cn: '01 · 发布基线与依赖版本对齐',
+          },
+          tags: ['PACKAGE', 'VERSION', 'DSJ'],
+          items: [
+            {
+              tw: '前端主工程對外發版口徑升級至 <code>AI-Platform-v1.1.23-dsj</code>，根 package 版本為 <code>AI-Platform-v1.1.23-dsj.1</code>。',
+              cn: '前端主工程对外发布口径升级至 <code>AI-Platform-v1.1.23-dsj</code>，根 package 版本为 <code>AI-Platform-v1.1.23-dsj.1</code>。',
+            },
+            {
+              tw: '管理端、行動端與入口網站套件對齊至 <code>1.1.23-ai-platform</code> 系列；cloudpivot 核心套件依 DSJ 交付版本對齊至 <code>1.1.23-ai-platform-dsj.1/.2</code>，<code>extension-dsj</code> 為 <code>1.1.22-ai-platform-dsj.2</code>。',
+              cn: '管理端、移动端与门户组件对齐至 <code>1.1.23-ai-platform</code> 系列；cloudpivot 核心组件按 DSJ 交付版本对齐至 <code>1.1.23-ai-platform-dsj.1/.2</code>，<code>extension-dsj</code> 为 <code>1.1.22-ai-platform-dsj.2</code>。',
+            },
+            {
+              tw: '報表套件更新至 <code>6.3.1-alpha.77</code>，列印套件更新至 <code>2.8.103</code>，並同步更新 <code>yarn.lock</code>；版本對齊不等同於新增業務功能模組。',
+              cn: '报表组件更新至 <code>6.3.1-alpha.77</code>，打印组件更新至 <code>2.8.103</code>，并同步更新 <code>yarn.lock</code>；版本对齐不等同于新增业务功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · KindEditor 繁體復測文案修復',
+            cn: '02 · KindEditor 繁体复测文案修复',
+          },
+          tags: ['FRONTEND', 'I18N', 'KindEditor'],
+          items: [
+            {
+              tw: '修正繁體語境下圖片彈窗的「本機上傳／上傳檔案」為「上傳圖片」，並將「圖片地址」調整為「圖片 URL」。',
+              cn: '修正繁体语境下图片弹窗的“本机上传／上传文件”为“上傳圖片”，并将“图片地址”调整为“圖片 URL”。',
+            },
+            {
+              tw: '修正有效 URL 提示、底線工具提示與文字背景工具提示，生產入口 <code>kindeditor-all.js</code> 與同步語言檔保持一致。',
+              cn: '修正有效 URL 提示、下划线工具提示与文字背景工具提示，生产入口 <code>kindeditor-all.js</code> 与同步语言文件保持一致。',
+            },
+            {
+              tw: '本項為 0928／0929 復測文案修正，不改變富文本編輯器的介面與操作流程。',
+              cn: '本项为 0928／0929 复测文案修正，不改变富文本编辑器的接口与操作流程。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · 行動端載入提示與批量列印相容',
+            cn: '03 · 移动端加载提示与批量打印兼容',
+          },
+          tags: ['MOBILE', 'PRINT', 'I18N'],
+          items: [
+            {
+              tw: 'MeScroll 下滑重新整理與載入中提示改由組件語系傳入，補齊英文、簡體中文與繁體中文的 <code>loadingText</code>，避免沿用內建簡體文案。',
+              cn: 'MeScroll 下滑重新整理与加载中提示改由组件语言项传入，补齐英文、简体中文与繁体中文的 <code>loadingText</code>，避免沿用内置简体文案。',
+            },
+            {
+              tw: '移動端批量列印對 <code>getPrintInfo()</code> 返回值補齊型別相容，保留既有列印請求入參、內容壓縮與 PDF 開啟流程。',
+              cn: '移动端批量打印对 <code>getPrintInfo()</code> 返回值补齐类型兼容，保留既有打印请求入参、内容压缩与 PDF 打开流程。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · DSJ 組織設定與既有缺陷相容修復',
+            cn: '04 · DSJ 组织配置与既有缺陷兼容修复',
+          },
+          tags: ['DSJ', 'ORG', 'BUGFIX'],
+          items: [
+            {
+              tw: '延續 DSJ 對釘釘、企業微信、飛書及政務釘釘等組織整合入口的前端隱藏策略，不代表移除後端能力或歷史資料。',
+              cn: '延续 DSJ 对钉钉、企业微信、飞书及政务钉钉等组织集成入口的前端隐藏策略，不代表移除后端能力或历史数据。',
+            },
+            {
+              tw: '組織設定相容舊版數字型 <code>relatedType</code>，統一轉換為字串編碼後再回填表單，避免舊資料導致整合類型判定錯誤。',
+              cn: '组织配置兼容旧版数字型 <code>relatedType</code>，统一转换为字符串编码后再回填表单，避免旧数据导致集成类型判断错误。',
+            },
+            {
+              tw: '修正電子簽章設定簽署內容未回傳範本欄位造成的空白與 TypeError；此為既有場景缺陷修復，未新增簽章介面。',
+              cn: '修正电子签章设置签署内容未回传模板字段造成的空白与 TypeError；此为既有场景缺陷修复，未新增签章接口。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '05 · 後端增量修復與升級腳本',
+            cn: '05 · 后端增量修复与升级脚本',
+          },
+          tags: ['BACKEND', 'DSJ', 'SQL', 'I18N'],
+          items: [
+            {
+              tw: '後端增量補齊 AI 服務檢測失敗的繁體用詞：移除重複 key，統一為「目前服務檢測未通過，請檢查設定後重試」；自訂按鈕成功提示改隨目前語系輸出；並將「建立資料」統一為「新增數據」。',
+              cn: '后端增量补齐 AI 服务检测失败的繁体用词：删除重复 key，统一为“目前服务检测未通过，请检查设置后重试”；自定义按钮成功提示改为跟随当前语言输出；并将“建立资料”统一为“新增数据”。',
+            },
+            {
+              tw: '客戶升級時需執行報表庫的增量 <code>upgrade8.7-dsj.sql</code>（MySQL；其他方言使用對應的 <code>upgrade8.7.dsj.sql</code>），以及雲樞 MySQL 增量腳本 <code>db/migration/mysql/deploy/upgrade/upgrade8.7-dsj.sql</code>；首次安裝的 <code>install/all_init.sql</code> 不需執行。',
+              cn: '客户升级时需执行报表库的增量 <code>upgrade8.7-dsj.sql</code>（MySQL；其他方言使用对应的 <code>upgrade8.7.dsj.sql</code>），以及云枢 MySQL 增量脚本 <code>db/migration/mysql/deploy/upgrade/upgrade8.7-dsj.sql</code>；首次安装的 <code>install/all_init.sql</code> 不需执行。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: '6ef7981ea8c..921913369db',
+          detail: {
+            tw: '本次 <code>AI-Platform-v1.1.23-dsj</code> 為 0924 版本後的增量提交範圍，共 17 筆可達提交、14 筆非合併提交。',
+            cn: '本次 <code>AI-Platform-v1.1.23-dsj</code> 为 0924 版本后的增量提交范围，共 17 笔可达提交、14 笔非合并提交。',
+          },
+        },
+        {
+          source: '1a74a819237 / 921913369db',
+          detail: {
+            tw: '主工程與前端套件版本升級至 AI-Platform-v1.1.23 DSJ 交付系列，並同步報表、列印依賴與 lockfile。',
+            cn: '主工程与前端组件版本升级至 AI-Platform-v1.1.23 DSJ 交付系列，并同步报表、打印依赖与 lockfile。',
+          },
+        },
+        {
+          source: '05f4eeb0be2 / 9d155e87490',
+          detail: {
+            tw: 'KindEditor 0928／0929 復測文案修正。',
+            cn: 'KindEditor 0928／0929 复测文案修正。',
+          },
+        },
+        {
+          source: '2e4d0947c4c / 3f2d54c5c70 / 41cfcb8e1f0',
+          detail: {
+            tw: '行動端載入提示、批量列印型別相容，以及簡體語言包遺漏鍵值補齊。',
+            cn: '移动端加载提示、批量打印类型兼容，以及简体语言包遗漏键值补齐。',
+          },
+        },
+        {
+          source: 'a48f53efa1b / 704feb2df83',
+          detail: {
+            tw: '組織設定舊資料型別相容與電子簽章既有缺陷修復。',
+            cn: '组织配置旧数据类型兼容与电子签章既有缺陷修复。',
+          },
+        },
+        {
+          source: '5e43b65c9a5 / d0427c32d9b / daf6e53f3f3 / d751ae9d99a',
+          detail: {
+            tw: '今日後端提交：文案用詞「建立資料」→「新增數據」、自訂按鈕成功提示跟隨語系、MCP／TTS 服務檢測提示修正，以及後端版本升級至 <code>AI-Platform-v1.1.22-dsj.2</code>。',
+            cn: '今日后端提交：文案用词“建立资料”→“新增数据”、自定义按钮成功提示跟随语言、MCP／TTS 服务检测提示修正，以及后端版本升级至 <code>AI-Platform-v1.1.22-dsj.2</code>。',
+          },
+        },
+        {
+          source: 'db/report/mysql/deploy/upgrade/upgrade8.7-dsj.sql / db/report/{dm,oracle,pgsql,sqlserver}/deploy/upgrade/upgrade8.7.dsj.sql',
+          detail: {
+            tw: '報表庫繁體化增量 UPDATE 腳本；客戶升級時執行適用資料庫方言的腳本，不執行 install 全量腳本。',
+            cn: '报表库繁体化增量 UPDATE 脚本；客户升级时执行适用数据库方言的脚本，不执行 install 全量脚本。',
+          },
+        },
+        {
+          source: 'db/migration/mysql/deploy/upgrade/upgrade8.7-dsj.sql',
+          detail: {
+            tw: '雲樞引擎增量腳本，僅 1 條 UPDATE：將兩個預設首頁 code 的名稱由簡體預設門戶改為「預設首頁」。',
+            cn: '云枢引擎增量脚本，仅 1 条 UPDATE：将两个默认首页 code 的名称由简体默认门户改为“预设首页”。',
+          },
+        },
+      ],
+    },
+    {
       id: 'ai-platform-v1-1-22-dsj',
       version: 'AI-Platform-v1.1.22-dsj',
       date: { tw: '2026-09-24 發版', cn: '2026-09-24 发布' },
-      badge: { tw: '目前版本', cn: '当前版本' },
+      badge: { tw: '上一版本', cn: '上一版本' },
       meta: {
         tw: '版本升級範圍：82e022d34aa 至 HEAD（6ef7981ea8c）。對外發版版本為 AI-Platform-v1.1.22-dsj，根 package 版本為 AI-Platform-v1.1.22-dsj.1，共納入 158 筆可達提交（151 筆非合併提交）。',
         cn: '版本升级范围：82e022d34aa 至 HEAD（6ef7981ea8c）。对外发版版本为 AI-Platform-v1.1.22-dsj，根 package 版本为 AI-Platform-v1.1.22-dsj.1，共纳入 158 笔可达提交（151 笔非合并提交）。',
