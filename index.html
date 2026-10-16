@@ -437,10 +437,208 @@
   };
   var releases = [
     {
+      id: 'ai-platform-v1-1-23-dsj-2',
+      version: 'AI-Platform-v1.1.23-dsj.2',
+      date: { tw: '2026-10-16 發版', cn: '2026-10-16 发布' },
+      badge: { tw: '目前版本', cn: '当前版本' },
+      meta: {
+        tw: '版本升級範圍：921913369db 至 HEAD（f8faa308bac）。對外發版版本為 AI-Platform-v1.1.23-dsj.2，根 package 版本為 AI-Platform-v1.1.23-dsj.2，共納入 28 筆可達提交（22 筆非合併提交）。',
+        cn: '版本升级范围：921913369db 至 HEAD（f8faa308bac）。对外发布版本为 AI-Platform-v1.1.23-dsj.2，根 package 版本为 AI-Platform-v1.1.23-dsj.2，共纳入 28 笔可达提交（22 笔非合并提交）。',
+      },
+      metrics: [
+        { num: '6', label: { tw: '更新主題', cn: '更新主题' } },
+        { num: '28', label: { tw: '可達提交', cn: '可达提交' } },
+        { num: '22', label: { tw: '非合併提交', cn: '非合并提交' } },
+        { num: '1.1.23', label: { tw: '發版基線', cn: '发布基线' } },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.23-dsj.2 為 9 月 29 日版本的增量發版：完成 cloudpivot、page-designer、portal-designer 與 locale-images 等套件版本對齊，並升級報表與列印依賴；替換界面圖片中的繁中與英文文案並移除無用圖片資源。同時修復 10/08 翻譯檢查發現的外鏈表單 401 與控件名稱多語系解析問題，修正新增關聯組織選「自主維護」仍被要求填寫 AgentId 的缺陷，並依定制需求調整時間控制項位置、移除正則校驗類型，完成 10/16 前端收尾修復。',
+        cn: '本次 AI-Platform-v1.1.23-dsj.2 为 9 月 29 日版本的增量发布：完成 cloudpivot、page-designer、portal-designer 与 locale-images 等组件版本对齐，并升级报表与打印依赖；替换界面图片中的繁中与英文文案并移除无用图片资源。同时修复 10/08 翻译检查发现的外链表单 401 与控件名称多语言解析问题，修正新增关联组织选“自主维护”仍被要求填写 AgentId 的缺陷，并按定制需求调整时间控件位置、移除正则校验类型，完成 10/16 前端收尾修复。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 發版基線與套件版本對齊',
+            cn: '01 · 发布基线与组件版本对齐',
+          },
+          tags: ['PACKAGE', 'VERSION', 'DSJ'],
+          items: [
+            {
+              tw: '前端主工程對外發版口徑升級至 <code>AI-Platform-v1.1.23-dsj.2</code>，根 package 版本同步為 <code>AI-Platform-v1.1.23-dsj.2</code>。',
+              cn: '前端主工程对外发布口径升级至 <code>AI-Platform-v1.1.23-dsj.2</code>，根 package 版本同步为 <code>AI-Platform-v1.1.23-dsj.2</code>。',
+            },
+            {
+              tw: 'cloudpivot 系列套件對齊至 <code>1.1.23-ai-platform-dsj.2</code>；<code>cloudpivot-page-designer</code> 發佈為 <code>1.1.8-ai-platform-dsj.1</code>、<code>cloudpivot-portal-designer</code> 為 <code>1.1.23-ai-platform-dsj.1</code>、<code>cloudpivot-locale-images</code> 為 <code>1.1.12-ai-platform-dsj.1</code>；<code>extension-dsj</code> 維持 <code>1.1.22-ai-platform-dsj.2</code>。',
+              cn: 'cloudpivot 系列组件对齐至 <code>1.1.23-ai-platform-dsj.2</code>；<code>cloudpivot-page-designer</code> 发布为 <code>1.1.8-ai-platform-dsj.1</code>、<code>cloudpivot-portal-designer</code> 为 <code>1.1.23-ai-platform-dsj.1</code>、<code>cloudpivot-locale-images</code> 为 <code>1.1.12-ai-platform-dsj.1</code>；<code>extension-dsj</code> 维持 <code>1.1.22-ai-platform-dsj.2</code>。',
+            },
+            {
+              tw: '版本升級伴隨 <code>yarn.lock</code> 同步更新；版本對齊不等同於新增業務功能模組。',
+              cn: '版本升级伴随 <code>yarn.lock</code> 同步更新；版本对齐不等同于新增业务功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · 報表與列印依賴升級',
+            cn: '02 · 报表与打印依赖升级',
+          },
+          tags: ['REPORT', 'PRINT', 'DEPENDENCY'],
+          items: [
+            {
+              tw: '報表套件 <code>@h3/report</code> 與 <code>@h3/report-mobile</code> 升級至 <code>6.3.1-alpha.79</code>，列印套件 <code>@h3print/designer</code>、<code>@h3print/excellit</code>、<code>@h3print/runtime</code> 同步升級至 <code>2.8.106</code>。',
+              cn: '报表组件 <code>@h3/report</code> 与 <code>@h3/report-mobile</code> 升级至 <code>6.3.1-alpha.79</code>，打印组件 <code>@h3print/designer</code>、<code>@h3print/excellit</code>、<code>@h3print/runtime</code> 同步升级至 <code>2.8.106</code>。',
+            },
+            {
+              tw: '本項為相依套件版本治理，不涉及新增報表設計器或列印功能模組。',
+              cn: '本项为依赖组件版本治理，不涉及新增报表设计器或打印功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · 界面圖片繁中與英文文案替換',
+            cn: '03 · 界面图片繁中与英文文案替换',
+          },
+          tags: ['IMAGE', 'I18N', 'ASSET'],
+          items: [
+            {
+              tw: '依鼎盛佳交付需求，將界面圖片內嵌的簡體文案替換為繁中與英文版本，涵蓋空狀態圖、快捷鍵提示、流程設計批量操作、單條依次新增提示、工作流通知配置圖、異常狀態及入口輪播圖等資源。',
+              cn: '按鼎盛佳交付需求，将界面图片内嵌的简体文案替换为繁中与英文版本，涵盖空状态图、快捷键提示、流程设计批量操作、单条依次新增提示、工作流通知配置图、异常状态及门户轮播图等资源。',
+            },
+            {
+              tw: '移除未使用的 custom-text 元件相關圖片，並撤回誤入庫的鼎盛佳線上文件，保持交付包資源乾淨。',
+              cn: '移除未使用的 custom-text 控件相关图片，并撤回误入库的鼎盛佳在线文档，保持交付包资源干净。',
+            },
+            {
+              tw: '圖片資源變更後透過 <code>cloudpivot-locale-images</code> 等套件版本升級入包，本項為交付資源維護，不涉及新增功能模組。',
+              cn: '图片资源变更后通过 <code>cloudpivot-locale-images</code> 等组件版本升级入包，本项为交付资源维护，不涉及新增功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · 10/08 翻譯檢查修復',
+            cn: '04 · 10/08 翻译检查修复',
+          },
+          tags: ['I18N', 'FRONTEND', 'BUGFIX'],
+          items: [
+            {
+              tw: '修正外鏈表單在行動端與入口網站的 401 問題：外鏈表單使用 <code>externalLinkToken</code> 由外鏈接口完成存取控制，不再呼叫僅面向登入使用者的業務單元權限接口。',
+              cn: '修正外链表单在移动端与门户的 401 问题：外链表单使用 <code>externalLinkToken</code> 由外链接口完成访问控制，不再调用仅面向登录用户的业务单元权限接口。',
+            },
+            {
+              tw: '表單設計校驗提示的複合控件名稱改由語系項目解析顯示名稱，修正翻譯檢查下提示包含非目前語系名稱的問題。',
+              cn: '表单设计校验提示的复合控件名称改由语言项解析显示名称，修正翻译检查下提示包含非当前语言名称的问题。',
+            },
+            {
+              tw: '應用樹篩選策略的節點名稱與搜尋結果改依目前語系解析 <code>getLangName</code>，修正「翻譯檢查」場景下名稱顯示裸 Key 或非繁中的問題。',
+              cn: '应用树筛选策略的节点名称与搜索结果改按当前语言解析 <code>getLangName</code>，修正“翻译检查”场景下名称显示裸 Key 或非繁中的问题。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '05 · 組織自主維護與表單設計客製',
+            cn: '05 · 组织自主维护与表单设计定制',
+          },
+          tags: ['ORG', 'DSJ', 'CUSTOMIZATION'],
+          items: [
+            {
+              tw: '修正 #214505：新增關聯組織選擇「自主維護」時不再被強制要求填寫 AgentId，僅在實際需要時才展示對應欄位。',
+              cn: '修正 #214505：新增关联组织选择“自主维护”时不再被强制要求填写 AgentId，仅在实际需要时才展示对应字段。',
+            },
+            {
+              tw: '依定制需求將時間控制項的 <code>widgetType</code>（控制項類型）從基礎資訊末尾移至首位，統一控制項屬性呈現順序。',
+              cn: '按定制需求将时间控件的 <code>widgetType</code>（控件类型）从基础信息末尾移至首位，统一控件属性呈现顺序。',
+            },
+            {
+              tw: '依定制需求移除表單設計中的「正則校驗類型」選項，收斂校驗配置入口；本項為前端入口治理，不影響既有已配置校驗規則的執行。',
+              cn: '按定制需求移除表单设计中的“正则校验类型”选项，收敛校验配置入口；本项为前端入口治理，不影响既有已配置校验规则的执行。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '06 · 10/16 前端收尾修復',
+            cn: '06 · 10/16 前端收尾修复',
+          },
+          tags: ['MOBILE', 'UI', 'BUGFIX'],
+          items: [
+            {
+              tw: '修正英文語境下被催辦的 tag 展示不全：改用精確文字寬度測量（不再以字符數估算）並預留亞像素誤差，避免英文文案被省略號截斷。',
+              cn: '修正英文语境下被催办的 tag 展示不全：改用精确文字宽度测量（不再以字符数估算）并预留亚像素误差，避免英文文案被省略号截断。',
+            },
+            {
+              tw: '修正表單設計「單條依次新增」提示圖片超出提示框的問題：為提示圖片增加 <code>max-width: 100%</code> 與高度自適，避免圖片溢出容器。',
+              cn: '修正表单设计“单条依次新增”提示图片超出提示框的问题：为提示图片增加 <code>max-width: 100%</code> 与高度自适应，避免图片溢出容器。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: '921913369db..f8faa308bac',
+          detail: {
+            tw: '本次 <code>AI-Platform-v1.1.23-dsj.2</code> 為 0929 版本後的增量提交範圍，共 28 筆可達提交、22 筆非合併提交。',
+            cn: '本次 <code>AI-Platform-v1.1.23-dsj.2</code> 为 0929 版本后的增量提交范围，共 28 笔可达提交、22 笔非合并提交。',
+          },
+        },
+        {
+          source: '748a7736e82 / f8faa308bac / 0fbced30e56',
+          detail: {
+            tw: 'cloudpivot 系列套件版本升級，以及 page-designer、portal-designer 包發佈與 locale-images 套件版本對齊。',
+            cn: 'cloudpivot 系列组件版本升级，以及 page-designer、portal-designer 包发布与 locale-images 组件版本对齐。',
+          },
+        },
+        {
+          source: '6c5d2925e4e / 7eadda1283a',
+          detail: {
+            tw: '報表套件升級至 <code>6.3.1-alpha.79</code>、列印套件升級至 <code>2.8.106</code>。',
+            cn: '报表组件升级至 <code>6.3.1-alpha.79</code>、打印组件升级至 <code>2.8.106</code>。',
+          },
+        },
+        {
+          source: '5471e3e3f9e / 91779765fc2 / f9ddaaaa0d9 / e887a8f07f6 / 8ce0eacc790 / 07df8f9230d',
+          detail: {
+            tw: '界面圖片繁中與英文文案替換、快捷鍵提示繁體化、無用圖片移除及誤入庫文件撤回。',
+            cn: '界面图片繁中与英文文案替换、快捷键提示繁体化、无用图片移除及误入库文档撤回。',
+          },
+        },
+        {
+          source: 'c2e94459c3d / e501fd71bcc',
+          detail: {
+            tw: '外鏈表單 401 修復，以及表單設計校驗提示、應用樹篩選策略名稱的多語系解析修復。',
+            cn: '外链表单 401 修复，以及表单设计校验提示、应用树筛选策略名称的多语言解析修复。',
+          },
+        },
+        {
+          source: 'dd924f5e546 / 758e4c7a45c / 2874247d838 / 23c63f59f80',
+          detail: {
+            tw: '#214505 新增關聯組織選「自主維護」不再要求填寫 AgentId。',
+            cn: '#214505 新增关联组织选“自主维护”不再要求填写 AgentId。',
+          },
+        },
+        {
+          source: '433c093c49c / a7b87d64165',
+          detail: {
+            tw: '時間控制項 <code>widgetType</code> 位置調整與移除正則校驗類型的客製調整。',
+            cn: '时间控件 <code>widgetType</code> 位置调整与移除正则校验类型的定制调整。',
+          },
+        },
+        {
+          source: 'f3cb6841dd6 / 3816a0ccb9f',
+          detail: {
+            tw: '10/16 收尾：英文被催辦 tag 展示不全、單條依次新增提示圖片超出提示框修復。',
+            cn: '10/16 收尾：英文被催办 tag 展示不全、单条依次新增提示图片超出提示框修复。',
+          },
+        },
+      ],
+    },
+    {
       id: 'ai-platform-v1-1-23-dsj',
       version: 'AI-Platform-v1.1.23-dsj',
       date: { tw: '2026-09-29 發版', cn: '2026-09-29 发布' },
-      badge: { tw: '目前版本', cn: '当前版本' },
+      badge: { tw: '上一版本', cn: '上一版本' },
       meta: {
         tw: '版本升級範圍：6ef7981ea8c 至 HEAD（921913369db）。對外發版版本為 AI-Platform-v1.1.23-dsj，根 package 版本為 AI-Platform-v1.1.23-dsj.1，共納入 17 筆可達提交（14 筆非合併提交）。',
         cn: '版本升级范围：6ef7981ea8c 至 HEAD（921913369db）。对外发布版本为 AI-Platform-v1.1.23-dsj，根 package 版本为 AI-Platform-v1.1.23-dsj.1，共纳入 17 笔可达提交（14 笔非合并提交）。',
