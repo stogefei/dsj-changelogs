@@ -437,10 +437,222 @@
   };
   var releases = [
     {
+      id: 'ai-platform-v1-1-23-dsj-3',
+      version: 'AI-Platform-v1.1.23-dsj.3',
+      date: { tw: '2026-10-23 發版', cn: '2026-10-23 发布' },
+      badge: { tw: '目前版本', cn: '当前版本' },
+      meta: {
+        tw: '版本升級範圍：f8faa308bac 至 HEAD（924f341aade）。對外發版版本為 AI-Platform-v1.1.23-dsj.3，cloudpivot 系列套件版本對齊至 1.1.23-ai-platform-dsj.3；根 package 版本欄位於發版時隨交付包升級。共納入 16 筆可達提交（全部非合併，含上版發版記錄文檔提交 1 筆）。',
+        cn: '版本升级范围：f8faa308bac 至 HEAD（924f341aade）。对外发布版本为 AI-Platform-v1.1.23-dsj.3，cloudpivot 系列组件版本对齐至 1.1.23-ai-platform-dsj.3；根 package 版本字段于发版时随交付包升级。共纳入 16 笔可达提交（全部非合并，含上版发版记录文档提交 1 笔）。',
+      },
+      metrics: [
+        { num: '6', label: { tw: '更新主題', cn: '更新主题' } },
+        { num: '16', label: { tw: '可達提交', cn: '可达提交' } },
+        { num: '16', label: { tw: '非合併提交', cn: '非合并提交' } },
+        { num: '1.1.23', label: { tw: '發版基線', cn: '发布基线' } },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.23-dsj.3 為 10/16 版本的增量發版：依 #216598 統一密碼規則為 8-64 位（不再強制複雜度），管理端與門戶密碼欄位新增明密文切換的密碼揭露機制，行動端設定頁新增「修改密碼」入口與頁面；修復 LINE 與郵箱設定查看態回顯明文密鑰的問題；依 #213675 於數據分析隱藏「地圖」圖表類型，並恢復預設正則校驗類型完整清單。同時完成套件版本對齊與未使用圖片資源清理。',
+        cn: '本次 AI-Platform-v1.1.23-dsj.3 为 10/16 版本的增量发布：按 #216598 统一密码规则为 8-64 位（不再强制复杂度），管理端与门户密码字段新增明密文切换的密码揭露机制，移动端设置页新增“修改密码”入口与页面；修复 LINE 与邮箱配置查看态回显明文密钥的问题；按 #213675 在数据分析隐藏“地图”图表类型，并恢复预设正则校验类型完整清单。同时完成组件版本对齐与未使用图片资源清理。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 發版基線與套件版本對齊',
+            cn: '01 · 发布基线与组件版本对齐',
+          },
+          tags: ['PACKAGE', 'VERSION', 'DSJ'],
+          items: [
+            {
+              tw: '前端主工程對外發版口徑升級至 <code>AI-Platform-v1.1.23-dsj.3</code>；<code>cloudpivot</code>、<code>cloudpivot-admin-core</code>、<code>cloudpivot-designer</code>、<code>cloudpivot-flow</code>、<code>cloudpivot-kindeditor</code>、<code>cloudpivot-page</code> 等套件對齊至 <code>1.1.23-ai-platform-dsj.3</code>。',
+              cn: '前端主工程对外发布口径升级至 <code>AI-Platform-v1.1.23-dsj.3</code>；<code>cloudpivot</code>、<code>cloudpivot-admin-core</code>、<code>cloudpivot-designer</code>、<code>cloudpivot-flow</code>、<code>cloudpivot-kindeditor</code>、<code>cloudpivot-page</code> 等组件对齐至 <code>1.1.23-ai-platform-dsj.3</code>。',
+            },
+            {
+              tw: '<code>cloudpivot-form</code>、<code>cloudpivot-list</code>、<code>cloudpivot-locale</code> 維持 <code>1.1.23-ai-platform-dsj.2</code>，<code>extension-dsj</code> 維持 <code>1.1.22-ai-platform-dsj.2</code>；版本對齊不等同於新增業務功能模組。',
+              cn: '<code>cloudpivot-form</code>、<code>cloudpivot-list</code>、<code>cloudpivot-locale</code> 维持 <code>1.1.23-ai-platform-dsj.2</code>，<code>extension-dsj</code> 维持 <code>1.1.22-ai-platform-dsj.2</code>；版本对齐不等同于新增业务功能模块。',
+            },
+            {
+              tw: '報表套件 <code>@h3/report</code> 與 <code>@h3/report-mobile</code> 升級至 <code>6.3.1-alpha.80</code>（配合「地圖」圖表類型隱藏開關），列印套件維持 <code>2.8.106</code>。',
+              cn: '报表组件 <code>@h3/report</code> 与 <code>@h3/report-mobile</code> 升级至 <code>6.3.1-alpha.80</code>（配合“地图”图表类型隐藏开关），打印组件维持 <code>2.8.106</code>。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · 密碼規則調整與密碼揭露機制（#216598）',
+            cn: '02 · 密码规则调整与密码揭露机制（#216598）',
+          },
+          tags: ['PASSWORD', 'SECURITY', 'DSJ'],
+          items: [
+            {
+              tw: '密碼規則統一調整為 8-64 位、不可包含中文與空格、新密碼不得與原密碼相同；取消原管理員需 12-14 位（大小寫字母、數字與特殊符號）及一般使用者需 8-14 位（大小寫字母與數字）的複雜度強制要求。',
+              cn: '密码规则统一调整为 8-64 位、不可包含中文与空格、新密码不得与原密码相同；取消原管理员需 12-14 位（大小写字母、数字与特殊符号）及一般用户需 8-14 位（大小写字母与数字）的复杂度强制要求。',
+            },
+            {
+              tw: '管理端「使用者管理」編輯彈窗、門戶「個人設定」與「修改密碼」彈窗同步套用新規則，繁中、簡中與英文提示文案隨之更新。',
+              cn: '管理端“用户管理”编辑弹窗、门户“个人设置”与“修改密码”弹窗同步套用新规则，繁体、简体与英文提示文案随之更新。',
+            },
+            {
+              tw: '新增密碼揭露機制：上述入口的原密碼、新密碼與確認密碼欄位均提供眼睛圖示，可在密文／明文間切換，便於核對輸入。',
+              cn: '新增密码揭露机制：上述入口的原密码、新密码与确认密码字段均提供眼睛图标，可在密文／明文间切换，便于核对输入。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · 行動端新增修改密碼頁面（#216598）',
+            cn: '03 · 移动端新增修改密码页面（#216598）',
+          },
+          tags: ['MOBILE', 'PASSWORD', 'DSJ'],
+          items: [
+            {
+              tw: '行動端設定頁的帳號列新增「修改密碼」操作入口，並新增 <code>/modify-password</code> 獨立頁面，無需回到電腦端即可完成改密。',
+              cn: '移动端设置页的账号行新增“修改密码”操作入口，并新增 <code>/modify-password</code> 独立页面，无需回到电脑端即可完成改密。',
+            },
+            {
+              tw: '新密碼經 RSA 公鑰加密後呼叫既有密碼修改介面，校驗規則與電腦版一致（必填、不含中文與空格、8-64 位、不得與原密碼相同）。',
+              cn: '新密码经 RSA 公钥加密后调用既有密码修改接口，校验规则与电脑端一致（必填、不含中文与空格、8-64 位、不得与原密码相同）。',
+            },
+            {
+              tw: '補齊管理端、門戶與行動端三端的繁中、簡中與英文文案。',
+              cn: '补齐管理端、门户与移动端三端的繁体、简体与英文文案。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · 通知與整合設定密鑰回顯修復',
+            cn: '04 · 通知与集成配置密钥回显修复',
+          },
+          tags: ['SECURITY', 'LINE', 'EMAIL'],
+          items: [
+            {
+              tw: '修復 LINE 通知渠道參數在查看態回顯明文密鑰的問題：<code>get_message_setting</code> 返回的加密欄位改以 <code>******</code> 呈現，不再顯示明文。',
+              cn: '修复 LINE 消息通道参数在查看态回显明文密钥的问题：<code>get_message_setting</code> 返回的加密字段改以 <code>******</code> 呈现，不再显示明文。',
+            },
+            {
+              tw: '系統整合設定中的郵箱配置查看態密碼／密鑰欄位同步改為 <code>******</code>，與 LINE 通道口徑一致，降低敏感資訊外洩風險。',
+              cn: '系统集成配置中的邮箱配置查看态密码／密钥字段同步改为 <code>******</code>，与 LINE 通道口径一致，降低敏感信息泄露风险。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '05 · 數據分析與正則校驗客製調整',
+            cn: '05 · 数据分析与正则校验定制调整',
+          },
+          tags: ['REPORT', 'FORM', 'DSJ'],
+          items: [
+            {
+              tw: '依 #213675 需求，報表／數據分析的圖表類型不再展示「地圖」（<code>ReportOptions.showMap = false</code>），報表套件同步升級至 <code>6.3.1-alpha.80</code>。',
+              cn: '按 #213675 需求，报表／数据分析的图表类型不再展示“地图”（<code>ReportOptions.showMap = false</code>），报表组件同步升级至 <code>6.3.1-alpha.80</code>。',
+            },
+            {
+              tw: '依最新定制需求，資料規則與表單控制項屬性中的預設正則校驗類型恢復完整清單（整數、數字、郵箱、中文、自訂），並取消非簡體中文環境僅顯示部分選項的語言差異；手機號碼、市話、郵遞區號與身分證號四類預設選項維持移除。',
+              cn: '按最新定制需求，数据规则与表单控件属性中的预设正则校验类型恢复完整清单（整数、数字、邮箱、中文、自定义），并取消非简体中文环境仅显示部分选项的语言差异；手机号、座机、邮政编码与身份证号四类预设选项维持移除。',
+            },
+            {
+              tw: '以上為前端入口與選項治理，不影響既有已配置校驗規則的執行。',
+              cn: '以上为前端入口与选项治理，不影响既有已配置校验规则的执行。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '06 · 資源清理與文檔更新',
+            cn: '06 · 资源清理与文档更新',
+          },
+          tags: ['ASSET', 'DOCS'],
+          items: [
+            {
+              tw: '移除管理端、門戶、行動端與設計器中未使用的圖片資源（草稿、快取、完成態、輪播選單、畫布快捷鍵提示等），降低交付包體積與維護成本。',
+              cn: '移除管理端、门户、移动端与设计器中未使用的图片资源（草稿、缓存、完成态、轮播菜单、画布快捷键提示等），降低交付包体积与维护成本。',
+            },
+            {
+              tw: '更新流程參與者函數說明文檔，並收錄上版發版記錄文檔提交；本項不涉及功能變更。',
+              cn: '更新流程参与者函数说明文档，并收录上版发版记录文档提交；本项不涉及功能变更。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: 'f8faa308bac..924f341aade',
+          detail: {
+            tw: '本次 <code>AI-Platform-v1.1.23-dsj.3</code> 為 10/16 版本後的增量提交範圍，共 16 筆可達提交（全部非合併，含上版發版記錄文檔提交 1 筆）。',
+            cn: '本次 <code>AI-Platform-v1.1.23-dsj.3</code> 为 10/16 版本后的增量提交范围，共 16 笔可达提交（全部非合并，含上版发版记录文档提交 1 笔）。',
+          },
+        },
+        {
+          source: '3881a770eef',
+          detail: {
+            tw: 'cloudpivot 系列套件版本升級，對齊至 <code>1.1.23-ai-platform-dsj.3</code>。',
+            cn: 'cloudpivot 系列组件版本升级，对齐至 <code>1.1.23-ai-platform-dsj.3</code>。',
+          },
+        },
+        {
+          source: 'b1232281494 / 32895bc92cd / 36d26e35d54 / 115e702ebe1 / d7f07b90508 / 924f341aade',
+          detail: {
+            tw: '#216598 密碼規則統一 8-64 位、密碼揭露機制與行動端修改密碼頁面（含入口位置與圖示樣式收尾調整）。',
+            cn: '#216598 密码规则统一 8-64 位、密码揭露机制与移动端修改密码页面（含入口位置与图标样式收尾调整）。',
+          },
+        },
+        {
+          source: '8a5e8dbaad4',
+          detail: {
+            tw: '修復 LINE 通知渠道 <code>get_message_setting</code> 明文密鑰回顯。',
+            cn: '修复 LINE 消息通道 <code>get_message_setting</code> 明文密钥回显。',
+          },
+        },
+        {
+          source: '36d26e35d54（emailConfig.vue 部分）',
+          detail: {
+            tw: '郵箱整合配置查看態密碼／密鑰欄位改為 <code>******</code>。',
+            cn: '邮箱集成配置查看态密码／密钥字段改为 <code>******</code>。',
+          },
+        },
+        {
+          source: '7b65f14c584',
+          detail: {
+            tw: '#213675 隱藏「地圖」圖表類型，報表套件升級至 <code>6.3.1-alpha.80</code>。',
+            cn: '#213675 隐藏“地图”图表类型，报表组件升级至 <code>6.3.1-alpha.80</code>。',
+          },
+        },
+        {
+          source: '8237bbd4d88 / adcfa5b2344',
+          detail: {
+            tw: '預設正則校驗類型清單恢復完整，並取消非簡體中文環境的選項隱藏差異。',
+            cn: '预设正则校验类型清单恢复完整，并取消非简体中文环境的选项隐藏差异。',
+          },
+        },
+        {
+          source: '68cb46458b2 / 95169409cb5 / 8bcb357f827',
+          detail: {
+            tw: '未使用圖片資源清理。',
+            cn: '未使用图片资源清理。',
+          },
+        },
+        {
+          source: 'f3567f79317',
+          detail: {
+            tw: '流程參與者函數說明文檔更新。',
+            cn: '流程参与者函数说明文档更新。',
+          },
+        },
+        {
+          source: 'cf98f95bd2d',
+          detail: {
+            tw: '上版 <code>AI-Platform-v1.1.23-dsj.2</code> 發版記錄文檔更新。',
+            cn: '上版 <code>AI-Platform-v1.1.23-dsj.2</code> 发版记录文档更新。',
+          },
+        },
+      ],
+    },
+    {
       id: 'ai-platform-v1-1-23-dsj-2',
       version: 'AI-Platform-v1.1.23-dsj.2',
       date: { tw: '2026-10-16 發版', cn: '2026-10-16 发布' },
-      badge: { tw: '目前版本', cn: '当前版本' },
+      badge: { tw: '上一版本', cn: '上一版本' },
       meta: {
         tw: '版本升級範圍：921913369db 至 HEAD（f8faa308bac）。對外發版版本為 AI-Platform-v1.1.23-dsj.2，根 package 版本為 AI-Platform-v1.1.23-dsj.2，共納入 28 筆可達提交（22 筆非合併提交）。',
         cn: '版本升级范围：921913369db 至 HEAD（f8faa308bac）。对外发布版本为 AI-Platform-v1.1.23-dsj.2，根 package 版本为 AI-Platform-v1.1.23-dsj.2，共纳入 28 笔可达提交（22 笔非合并提交）。',
