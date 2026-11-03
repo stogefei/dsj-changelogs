@@ -437,10 +437,201 @@
   };
   var releases = [
     {
+      id: 'ai-platform-v1-1-23-dsj-5',
+      version: 'AI-Platform-v1.1.23-dsj.5',
+      date: { tw: '2026-11-03 發版', cn: '2026-11-03 发布' },
+      badge: { tw: '目前版本', cn: '当前版本' },
+      meta: {
+        tw: '版本升級範圍：924f341aade 至 HEAD（e69032b3604）。對外發版版本為 AI-Platform-v1.1.23-dsj.5，根 package 版本為 AI-Platform-v1.1.23-dsj.5，cloudpivot 系列套件全量對齊至 1.1.23-ai-platform-dsj.5。共納入 10 筆可達提交（9 筆非合併提交）。',
+        cn: '版本升级范围：924f341aade 至 HEAD（e69032b3604）。对外发布版本为 AI-Platform-v1.1.23-dsj.5，根 package 版本为 AI-Platform-v1.1.23-dsj.5，cloudpivot 系列组件全量对齐至 1.1.23-ai-platform-dsj.5。共纳入 10 笔可达提交（9 笔非合并提交）。',
+      },
+      metrics: [
+        { num: '6', label: { tw: '更新主題', cn: '更新主题' } },
+        { num: '10', label: { tw: '可達提交', cn: '可达提交' } },
+        { num: '9', label: { tw: '非合併提交', cn: '非合并提交' } },
+        { num: '1.1.23', label: { tw: '發版基線', cn: '发布基线' } },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.23-dsj.5 為 10/23 版本的增量發版：地圖控制項預設定位由上海調整為高雄，Google 地圖新增定位按鈕與免空白渲染優化；頁面設計器清理未使用組件類型的枚舉與多語系文案；替換 AI 首頁與門戶預設輪播的多語系圖片；報表套件升級至 6.3.1-alpha.87、h3-mobile-vue 升級至 0.2.166，並完成 cloudpivot 系列套件全量版本對齊至 dsj.5。另按補充記錄收錄 #216307「查看引用」統計口徑修復、流程通知多語系修復與預設門戶按語系返回的調整。',
+        cn: '本次 AI-Platform-v1.1.23-dsj.5 为 10/23 版本的增量发布：地图控件默认定位由上海调整为高雄，Google 地图新增定位按钮与免空白渲染优化；页面设计器清理未使用组件类型的枚举与多语言文案；替换 AI 首页与门户默认轮播的多语言图片；报表组件升级至 6.3.1-alpha.87、h3-mobile-vue 升级至 0.2.166，并完成 cloudpivot 系列组件全量版本对齐至 dsj.5。另按补充记录收录 #216307“查看引用”统计口径修复、流程通知多语言修复与默认门户按语言返回的调整。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 發版基線與套件版本全量對齊',
+            cn: '01 · 发布基线与组件版本全量对齐',
+          },
+          tags: ['PACKAGE', 'VERSION', 'DSJ'],
+          items: [
+            {
+              tw: '前端主工程對外發版口徑升級至 <code>AI-Platform-v1.1.23-dsj.5</code>，根 package 版本同步為 <code>AI-Platform-v1.1.23-dsj.5</code>（發版期間經歷 dsj.3 → dsj.4 → dsj.5 三次版本推進）。',
+              cn: '前端主工程对外发布口径升级至 <code>AI-Platform-v1.1.23-dsj.5</code>，根 package 版本同步为 <code>AI-Platform-v1.1.23-dsj.5</code>（发版期间经历 dsj.3 → dsj.4 → dsj.5 三次版本推进）。',
+            },
+            {
+              tw: 'cloudpivot 系列套件全量對齊至 <code>1.1.23-ai-platform-dsj.5</code>（含 cloudpivot、admin-core、ai、apis、designer、flow、form、forms、list、locale、locale-images、mobile-vue、page、page-designer、platform、portal-designer 等）；<code>cloudpivot-kindeditor</code> 維持 <code>dsj.3</code>，<code>extension-dsj</code> 維持 <code>1.1.22-ai-platform-dsj.2</code>。',
+              cn: 'cloudpivot 系列组件全量对齐至 <code>1.1.23-ai-platform-dsj.5</code>（含 cloudpivot、admin-core、ai、apis、designer、flow、form、forms、list、locale、locale-images、mobile-vue、page、page-designer、platform、portal-designer 等）；<code>cloudpivot-kindeditor</code> 维持 <code>dsj.3</code>，<code>extension-dsj</code> 维持 <code>1.1.22-ai-platform-dsj.2</code>。',
+            },
+            {
+              tw: '版本對齊不等同於新增業務功能模組。',
+              cn: '版本对齐不等同于新增业务功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · 地圖預設定位調整為高雄',
+            cn: '02 · 地图默认定位调整为高雄',
+          },
+          tags: ['MAP', 'DSJ', 'CUSTOMIZATION'],
+          items: [
+            {
+              tw: '高德地圖預設中心點由上海調整為高雄（<code>120.3023, 22.603</code>，高雄市前鎮區），未選定位址時的預設視角符合本地使用場景。',
+              cn: '高德地图预设中心点由上海调整为高雄（<code>120.3023, 22.603</code>，高雄市前镇区），未选择地址时的默认视角符合本地使用场景。',
+            },
+            {
+              tw: 'Google 地圖預設縮放級別由 14 調整為 16，定位顯示更聚焦；PC 端地圖彈窗新增「定位」按鈕，點擊後回到當前位置。',
+              cn: 'Google 地图预设缩放级别由 14 调整为 16，定位显示更聚焦；PC 端地图弹窗新增“定位”按钮，点击后回到当前位置。',
+            },
+            {
+              tw: 'Google 地圖載入優化：先按預設中心立即渲染再異步定位校正，避免定位期間空白等待；定位失敗時仍保留預設中心地圖，不再卡在載入狀態。',
+              cn: 'Google 地图加载优化：先按预设中心立即渲染再异步定位校正，避免定位期间空白等待；定位失败时仍保留预设中心地图，不再卡在加载状态。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · 頁面設計器遺留組件類型清理',
+            cn: '03 · 页面设计器遗留组件类型清理',
+          },
+          tags: ['PAGE', 'DESIGNER', 'I18N'],
+          items: [
+            {
+              tw: '移除頁面設計器（含行動端設計器）中未使用組件類型的枚舉定義與對應多語系文案（母版、影片、錨點、宮格、輪播、掃一掃、柵格、步驟條容器、導航頁容器等），涵蓋繁中、簡中與英文三語。',
+              cn: '移除页面设计器（含移动端设计器）中未使用组件类型的枚举定义与对应多语言文案（母版、视频、锚点、宫格、轮播、扫一扫、栅格、步骤条容器、导航页容器等），涵盖繁体、简体与英文三语。',
+            },
+            {
+              tw: '清理後修復了部分遺留類型在多語系場景下文案缺失或殘留的問題；本項為代碼與文案治理，不影響現有頁面中已使用組件的正常運行。',
+              cn: '清理后修复了部分遗留类型在多语言场景下文案缺失或残留的问题；本项为代码与文案治理，不影响现有页面中已使用组件的正常运行。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · 多語系圖片資源替換',
+            cn: '04 · 多语言图片资源替换',
+          },
+          tags: ['IMAGE', 'I18N', 'ASSET'],
+          items: [
+            {
+              tw: '替換 AI 平台首頁引導圖（繁中、簡中、英文）與門戶預設輪播圖（繁中、簡中、英文），圖片體積同步縮減，優化載入速度。',
+              cn: '替换 AI 平台首页引导图（繁体、简体、英文）与门户默认轮播图（繁体、简体、英文），图片体积同步缩减，优化加载速度。',
+            },
+            {
+              tw: '圖片資源變更後透過 <code>cloudpivot-locale-images</code> 套件版本升級入包，本項為交付資源維護，不涉及新增功能模組。',
+              cn: '图片资源变更后通过 <code>cloudpivot-locale-images</code> 组件版本升级入包，本项为交付资源维护，不涉及新增功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '05 · 依賴版本治理',
+            cn: '05 · 依赖版本治理',
+          },
+          tags: ['REPORT', 'MOBILE', 'DEPENDENCY'],
+          items: [
+            {
+              tw: '報表套件 <code>@h3/report</code> 與 <code>@h3/report-mobile</code> 升級至 <code>6.3.1-alpha.87</code>（發版期間經 .80 → .89 → .86 → .87 校準），列印套件維持 <code>2.8.106</code>。',
+              cn: '报表组件 <code>@h3/report</code> 与 <code>@h3/report-mobile</code> 升级至 <code>6.3.1-alpha.87</code>（发版期间经 .80 → .89 → .86 → .87 校准），打印组件维持 <code>2.8.106</code>。',
+            },
+            {
+              tw: '行動端基礎組件 <code>h3-mobile-vue</code> 由 <code>0.2.165-dsj</code> 升級至 <code>0.2.166</code>，回歸官方版本線。',
+              cn: '移动端基础组件 <code>h3-mobile-vue</code> 由 <code>0.2.165-dsj</code> 升级至 <code>0.2.166</code>，回归官方版本线。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '06 · 引用統計與多語系補充修復（外部記錄）',
+            cn: '06 · 引用统计与多语言补充修复（外部记录）',
+          },
+          tags: ['BUGFIX', 'I18N', 'PORTAL'],
+          items: [
+            {
+              tw: '修復 #216307：「查看引用」顯示 0 個引用，但業務整合方法刪除時仍判定存在引用而無法刪除——兩個接口的引用統計結果不一致；修復後統計口徑統一，引用數為 0 時可正常刪除。',
+              cn: '修复 #216307：“查看引用”显示 0 个引用，但业务整合方法删除时仍判定存在引用而无法删除——两个接口的引用统计结果不一致；修复后统计口径统一，引用数为 0 时可正常删除。',
+            },
+            {
+              tw: '流程通知多語系修復：修正流程通知場景的多語系顯示問題，確保通知文案在繁體等非簡體環境下正確呈現。',
+              cn: '流程通知多语言修复：修正流程通知场景的多语言显示问题，确保通知文案在繁体等非简体环境下正确呈现。',
+            },
+            {
+              tw: '門戶設計器的預設門戶改為按目前語系返回，與既有「預設首頁」繁體化治理口徑一致。',
+              cn: '门户设计器的默认门户改为按当前语言返回，与既有“预设首页”繁体化治理口径一致。',
+            },
+            {
+              tw: '以上三項為補充收錄的發版記錄，不在本次前端倉庫提交範圍內（<code>924f341aade..e69032b3604</code> 無對應提交）。',
+              cn: '以上三项为补充收录的发版记录，不在本次前端仓库提交范围内（<code>924f341aade..e69032b3604</code> 无对应提交）。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: '924f341aade..e69032b3604',
+          detail: {
+            tw: '本次 <code>AI-Platform-v1.1.23-dsj.5</code> 為 10/23 版本後的增量提交範圍，共 10 筆可達提交、9 筆非合併提交。',
+            cn: '本次 <code>AI-Platform-v1.1.23-dsj.5</code> 为 10/23 版本后的增量提交范围，共 10 笔可达提交、9 笔非合并提交。',
+          },
+        },
+        {
+          source: '69d3c54c9d7 / e69032b3604',
+          detail: {
+            tw: '根版本升級至 <code>AI-Platform-v1.1.23-dsj.5</code>，cloudpivot 系列套件全量對齊至 <code>1.1.23-ai-platform-dsj.5</code>。',
+            cn: '根版本升级至 <code>AI-Platform-v1.1.23-dsj.5</code>，cloudpivot 系列组件全量对齐至 <code>1.1.23-ai-platform-dsj.5</code>。',
+          },
+        },
+        {
+          source: '594d3ffc068',
+          detail: {
+            tw: '地圖預設定位調整為高雄、Google 地圖定位按鈕與免空白渲染優化。',
+            cn: '地图默认定位调整为高雄、Google 地图定位按钮与免空白渲染优化。',
+          },
+        },
+        {
+          source: 'cd54b32c016',
+          detail: {
+            tw: '頁面設計器未使用組件類型的枚舉與三語文案清理。',
+            cn: '页面设计器未使用组件类型的枚举与三语文案清理。',
+          },
+        },
+        {
+          source: '24229a066b3',
+          detail: {
+            tw: 'AI 首頁引導圖與門戶預設輪播圖多語系替換。',
+            cn: 'AI 首页引导图与门户默认轮播图多语言替换。',
+          },
+        },
+        {
+          source: 'c69c198ce80 / a76d1cc1763 / 5d6744fa632 / 912a1dec2c4',
+          detail: {
+            tw: '報表套件升至 <code>6.3.1-alpha.87</code>，<code>h3-mobile-vue</code> 升至 <code>0.2.166</code>，並隨版本推進同步更新 lockfile。',
+            cn: '报表组件升至 <code>6.3.1-alpha.87</code>，<code>h3-mobile-vue</code> 升至 <code>0.2.166</code>，并随版本推进同步更新 lockfile。',
+          },
+        },
+        {
+          source: '補充記錄（前端倉庫提交範圍外）',
+          detail: {
+            tw: '#216307「查看引用」與刪除校驗統計口徑不一致修復、流程通知多語系修復、預設門戶按語系返回。',
+            cn: '#216307“查看引用”与删除校验统计口径不一致修复、流程通知多语言修复、默认门户按语言返回。',
+          },
+        },
+      ],
+    },
+    {
       id: 'ai-platform-v1-1-23-dsj-3',
       version: 'AI-Platform-v1.1.23-dsj.3',
       date: { tw: '2026-10-23 發版', cn: '2026-10-23 发布' },
-      badge: { tw: '目前版本', cn: '当前版本' },
+      badge: { tw: '上一版本', cn: '上一版本' },
       meta: {
         tw: '版本升級範圍：f8faa308bac 至 HEAD（924f341aade）。對外發版版本為 AI-Platform-v1.1.23-dsj.3，cloudpivot 系列套件版本對齊至 1.1.23-ai-platform-dsj.3；根 package 版本欄位於發版時隨交付包升級。共納入 16 筆可達提交（全部非合併，含上版發版記錄文檔提交 1 筆）。',
         cn: '版本升级范围：f8faa308bac 至 HEAD（924f341aade）。对外发布版本为 AI-Platform-v1.1.23-dsj.3，cloudpivot 系列组件版本对齐至 1.1.23-ai-platform-dsj.3；根 package 版本字段于发版时随交付包升级。共纳入 16 笔可达提交（全部非合并，含上版发版记录文档提交 1 笔）。',
