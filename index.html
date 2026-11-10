@@ -437,10 +437,176 @@
   };
   var releases = [
     {
+      id: 'ai-platform-v1-1-23-dsj-7',
+      version: 'AI-Platform-v1.1.23-dsj.7',
+      date: { tw: '2026-11-09 發版', cn: '2026-11-09 发布' },
+      badge: { tw: '目前版本', cn: '当前版本' },
+      meta: {
+        tw: '版本升級範圍：e69032b3604 至 HEAD（ab006f8ac89）。對外發版版本為 AI-Platform-v1.1.23-dsj.7，根 package 版本由 dsj.5 直接推進至 dsj.7；承載本次變更的 cloudpivot、admin-core、designer、form、locale、utils 六套件對齊至 1.1.23-ai-platform-dsj.7。共納入 17 筆可達提交（14 筆非合併提交）。',
+        cn: '版本升级范围：e69032b3604 至 HEAD（ab006f8ac89）。对外发布版本为 AI-Platform-v1.1.23-dsj.7，根 package 版本由 dsj.5 直接推进至 dsj.7；承载本次变更的 cloudpivot、admin-core、designer、form、locale、utils 六组件对齐至 1.1.23-ai-platform-dsj.7。共纳入 17 笔可达提交（14 笔非合并提交）。',
+      },
+      metrics: [
+        { num: '5', label: { tw: '更新主題', cn: '更新主题' } },
+        { num: '17', label: { tw: '可達提交', cn: '可达提交' } },
+        { num: '14', label: { tw: '非合併提交', cn: '非合并提交' } },
+        { num: '1.1.23', label: { tw: '發版基線', cn: '发布基线' } },
+      ],
+      summary: {
+        tw: '本次 AI-Platform-v1.1.23-dsj.7 為 11/03 版本的增量發版：延續 #216598 將三端密碼規則由純長度要求調整為「8-64 位且必須包含大、小寫字母與數字」，繁中、簡中與英文提示文案同步；Google 地圖新增實例復用與中心點同步邏輯，避免同一容器多地圖實例互相覆蓋，高德預設中心（高雄）抽取至 cloudpivot-utils 共享；修復表單設計器「設計中…」鎖定提示的多語系裸 Key；報表套件經多次校準推進至 6.3.1-alpha.92，承載變更的六套件版本對齊至 dsj.7。',
+        cn: '本次 AI-Platform-v1.1.23-dsj.7 为 11/03 版本的增量发布：延续 #216598 将三端密码规则由纯长度要求调整为“8-64 位且必须包含大、小写字母与数字”，繁体、简体与英文提示文案同步；Google 地图新增实例复用与中心点同步逻辑，避免同一容器多地图实例互相覆盖，高德默认中心（高雄）抽取至 cloudpivot-utils 共享；修复表单设计器“设计中…”锁定提示的多语言裸 Key；报表组件经多次校准推进至 6.3.1-alpha.92，承载变更的六组件版本对齐至 dsj.7。',
+      },
+      sections: [
+        {
+          title: {
+            tw: '01 · 發版基線與套件版本對齊',
+            cn: '01 · 发布基线与组件版本对齐',
+          },
+          tags: ['PACKAGE', 'VERSION', 'DSJ'],
+          items: [
+            {
+              tw: '前端主工程對外發版口徑升級至 <code>AI-Platform-v1.1.23-dsj.7</code>，根 package 版本由 <code>dsj.5</code> 直接推進至 <code>dsj.7</code>（未經 dsj.6，版本號一次推進兩位）。',
+              cn: '前端主工程对外发布口径升级至 <code>AI-Platform-v1.1.23-dsj.7</code>，根 package 版本由 <code>dsj.5</code> 直接推进至 <code>dsj.7</code>（未经 dsj.6，版本号一次推进两位）。',
+            },
+            {
+              tw: '承載本次變更的六套件升級至 <code>1.1.23-ai-platform-dsj.7</code>：<code>cloudpivot</code>（密碼校驗）、<code>cloudpivot-admin-core</code>（管理端密碼校驗）、<code>cloudpivot-designer</code>（鎖定提示修復）、<code>cloudpivot-form</code>（地圖面板）、<code>cloudpivot-locale</code>（三語文案）與 <code>cloudpivot-utils</code>（地圖工具）；<code>cloudpivot-utils</code> 為首次進入 DSJ 版本線（由 <code>1.1.23-ai-platform</code> 對齊至 <code>dsj.7</code>）。其餘套件維持 <code>dsj.5</code>，<code>cloudpivot-kindeditor</code> 維持 <code>dsj.3</code>，<code>extension-dsj</code> 維持 <code>1.1.22-ai-platform-dsj.2</code>。',
+              cn: '承载本次变更的六组件升级至 <code>1.1.23-ai-platform-dsj.7</code>：<code>cloudpivot</code>（密码校验）、<code>cloudpivot-admin-core</code>（管理端密码校验）、<code>cloudpivot-designer</code>（锁定提示修复）、<code>cloudpivot-form</code>（地图面板）、<code>cloudpivot-locale</code>（三语文案）与 <code>cloudpivot-utils</code>（地图工具）；<code>cloudpivot-utils</code> 为首次进入 DSJ 版本线（由 <code>1.1.23-ai-platform</code> 对齐至 <code>dsj.7</code>）。其余组件维持 <code>dsj.5</code>，<code>cloudpivot-kindeditor</code> 维持 <code>dsj.3</code>，<code>extension-dsj</code> 维持 <code>1.1.22-ai-platform-dsj.2</code>。',
+            },
+            {
+              tw: '發版期間（11-04）曾將依賴解析表中混合的 dsj.1/.2/.3 舊版本全量對齊至 <code>dsj.5</code>，並同步更新 <code>yarn.lock</code>；版本對齊不等同於新增業務功能模組。',
+              cn: '发版期间（11-04）曾将依赖解析表中混合的 dsj.1/.2/.3 旧版本全量对齐至 <code>dsj.5</code>，并同步更新 <code>yarn.lock</code>；版本对齐不等同于新增业务功能模块。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '02 · 密碼規則恢複複雜度要求（#216598）',
+            cn: '02 · 密码规则恢复复杂度要求（#216598）',
+          },
+          tags: ['PASSWORD', 'SECURITY', 'DSJ'],
+          items: [
+            {
+              tw: '延續 #216598 調整：三端新密碼校驗由「8-64 位」純長度要求恢復字符組成要求——必須同時包含大寫字母、小寫字母與數字；「不可包含中文與空格」「新密碼不得與原密碼相同」等既有規則維持不變。',
+              cn: '延续 #216598 调整：三端新密码校验由“8-64 位”纯长度要求恢复字符组成要求——必须同时包含大写字母、小写字母与数字；“不可包含中文与空格”“新密码不得与原密码相同”等既有规则维持不变。',
+            },
+            {
+              tw: '管理端「使用者管理」編輯彈窗、門戶「修改密碼」與「個人設定」、行動端 <code>/modify-password</code> 頁面同步套用新校驗規則。',
+              cn: '管理端“用户管理”编辑弹窗、门户“修改密码”与“个人设置”、移动端 <code>/modify-password</code> 页面同步套用新校验规则。',
+            },
+            {
+              tw: '管理端、門戶與行動端的繁中、簡中與英文提示文案同步更新為「新密碼長度應為 8-64 位，且必須包含大、小寫字母和數字」口徑。',
+              cn: '管理端、门户与移动端的繁体、简体与英文提示文案同步更新为“新密码长度应为 8-64 位，且必须包含大、小写字母和数字”口径。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '03 · Google 地圖實例復用與預設中心共享',
+            cn: '03 · Google 地图实例复用与默认中心共享',
+          },
+          tags: ['MAP', 'DSJ', 'CUSTOMIZATION'],
+          items: [
+            {
+              tw: 'Google 地圖新增實例復用機制：地圖面板再次載入時若已有實例，僅透過 <code>syncMapPosition</code> 同步中心點與標記，不再重複創建，避免同一容器中多個地圖實例互相覆蓋。',
+              cn: 'Google 地图新增实例复用机制：地图面板再次加载时若已有实例，仅通过 <code>syncMapPosition</code> 同步中心点与标记，不再重复创建，避免同一容器中多个地图实例互相覆盖。',
+            },
+            {
+              tw: '無已選地址時「先按預設中心立即渲染、再異步定位校正」的流程整合進面板焦點邏輯；定位失敗時仍保留預設中心地圖，不卡載入狀態。',
+              cn: '无已选地址时“先按默认中心立即渲染、再异步定位校正”的流程整合进面板焦点逻辑；定位失败时仍保留默认中心地图，不卡加载状态。',
+            },
+            {
+              tw: '高德地圖預設中心點（高雄 <code>120.3023, 22.603</code>）的取值邏輯抽取至 <code>cloudpivot-utils</code>（<code>AmapUtils.getDefaultCenter</code>），行動端控件與渲染端地圖面板共用同一來源，後續調整只需改一處。',
+              cn: '高德地图默认中心点（高雄 <code>120.3023, 22.603</code>）的取值逻辑抽取至 <code>cloudpivot-utils</code>（<code>AmapUtils.getDefaultCenter</code>），移动端控件与渲染端地图面板共用同一来源，后续调整只需改一处。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '04 · 表單設計器鎖定提示多語系修復',
+            cn: '04 · 表单设计器锁定提示多语言修复',
+          },
+          tags: ['DESIGNER', 'I18N', 'BUGFIX'],
+          items: [
+            {
+              tw: '修復表單設計器「文件鎖定資訊」中「設計中…」提示顯示多語系裸 Key 的問題：i18n key 由不存在的 <code>languages.Apps.dataitem.designing</code> 命名空間修正為 <code>cloudpivot.form.dataitem.designing</code>，提示恢復正常本地化顯示。',
+              cn: '修复表单设计器“文件锁定信息”中“设计中…”提示显示多语言裸 Key 的问题：i18n key 由不存在的 <code>languages.Apps.dataitem.designing</code> 命名空间修正为 <code>cloudpivot.form.dataitem.designing</code>，提示恢复正常本地化显示。',
+            },
+          ],
+        },
+        {
+          title: {
+            tw: '05 · 報表版本推進與工程治理',
+            cn: '05 · 报表版本推进与工程治理',
+          },
+          tags: ['REPORT', 'DEPENDENCY', 'CHORE'],
+          items: [
+            {
+              tw: '報表套件 <code>@h3/report</code> 與 <code>@h3/report-mobile</code> 推進至 <code>6.3.1-alpha.92</code>（發版期間經 .88 → 回退 .87 → .88 → .89 → .90 → .91 → .92 多次校準，其中 11-03 一筆為顯式回退後再升級）；列印套件維持 <code>2.8.106</code>，行動端基礎組件 <code>h3-mobile-vue</code> 維持 <code>0.2.166</code>。',
+              cn: '报表组件 <code>@h3/report</code> 与 <code>@h3/report-mobile</code> 推进至 <code>6.3.1-alpha.92</code>（发版期间经 .88 → 回退 .87 → .88 → .89 → .90 → .91 → .92 多次校准，其中 11-03 一笔为显式回退后再升级）；打印组件维持 <code>2.8.106</code>，移动端基础组件 <code>h3-mobile-vue</code> 维持 <code>0.2.166</code>。',
+            },
+            {
+              tw: '工程配置：<code>.gitignore</code> 收錄 <code>settings.json</code> 與 <code>.claude</code> 目錄，屬開發環境治理，不影響交付物。',
+              cn: '工程配置：<code>.gitignore</code> 收录 <code>settings.json</code> 与 <code>.claude</code> 目录，属开发环境治理，不影响交付物。',
+            },
+          ],
+        },
+      ],
+      sources: [
+        {
+          source: 'e69032b3604..ab006f8ac89',
+          detail: {
+            tw: '本次 <code>AI-Platform-v1.1.23-dsj.7</code> 為 11/03 版本後的增量提交範圍，共 17 筆可達提交、14 筆非合併提交。',
+            cn: '本次 <code>AI-Platform-v1.1.23-dsj.7</code> 为 11/03 版本后的增量提交范围，共 17 笔可达提交、14 笔非合并提交。',
+          },
+        },
+        {
+          source: '03fcbc9cb60',
+          detail: {
+            tw: '#216598 三端密碼規則恢復複雜度要求，繁中、簡中與英文提示文案同步。',
+            cn: '#216598 三端密码规则恢复复杂度要求，繁体、简体与英文提示文案同步。',
+          },
+        },
+        {
+          source: '0dfdff22ab9',
+          detail: {
+            tw: 'Google 地圖實例復用與中心點同步，高德預設中心抽取至 <code>cloudpivot-utils</code>。',
+            cn: 'Google 地图实例复用与中心点同步，高德默认中心抽取至 <code>cloudpivot-utils</code>。',
+          },
+        },
+        {
+          source: '521d852754b',
+          detail: {
+            tw: '表單設計器「設計中…」鎖定提示多語系裸 Key 修復。',
+            cn: '表单设计器“设计中…”锁定提示多语言裸 Key 修复。',
+          },
+        },
+        {
+          source: 'f4cbc76d18a / ecdf6d352e6 / ed42366e45d / aba618b3e3d / ee9c07d5232 / dce3e3a5e40 / beb0717def9 / c0685c92ed8',
+          detail: {
+            tw: '報表套件版本推進至 <code>6.3.1-alpha.92</code>（含一次顯式回退後再升級），並同步更新 lockfile。',
+            cn: '报表组件版本推进至 <code>6.3.1-alpha.92</code>（含一次显式回退后再升级），并同步更新 lockfile。',
+          },
+        },
+        {
+          source: '86706600b59 / ab006f8ac89',
+          detail: {
+            tw: '依賴解析表全量對齊與根版本、六套件升級至 <code>AI-Platform-v1.1.23-dsj.7</code>。',
+            cn: '依赖解析表全量对齐与根版本、六组件升级至 <code>AI-Platform-v1.1.23-dsj.7</code>。',
+          },
+        },
+        {
+          source: 'becc099683b',
+          detail: {
+            tw: '<code>.gitignore</code> 收錄 <code>settings.json</code> 與 <code>.claude</code>（工程配置）。',
+            cn: '<code>.gitignore</code> 收录 <code>settings.json</code> 与 <code>.claude</code>（工程配置）。',
+          },
+        },
+      ],
+    },
+    {
       id: 'ai-platform-v1-1-23-dsj-5',
       version: 'AI-Platform-v1.1.23-dsj.5',
       date: { tw: '2026-11-03 發版', cn: '2026-11-03 发布' },
-      badge: { tw: '目前版本', cn: '当前版本' },
+      badge: { tw: '上一版本', cn: '上一版本' },
       meta: {
         tw: '版本升級範圍：924f341aade 至 HEAD（e69032b3604）。對外發版版本為 AI-Platform-v1.1.23-dsj.5，根 package 版本為 AI-Platform-v1.1.23-dsj.5，cloudpivot 系列套件全量對齊至 1.1.23-ai-platform-dsj.5。共納入 10 筆可達提交（9 筆非合併提交）。',
         cn: '版本升级范围：924f341aade 至 HEAD（e69032b3604）。对外发布版本为 AI-Platform-v1.1.23-dsj.5，根 package 版本为 AI-Platform-v1.1.23-dsj.5，cloudpivot 系列组件全量对齐至 1.1.23-ai-platform-dsj.5。共纳入 10 笔可达提交（9 笔非合并提交）。',
